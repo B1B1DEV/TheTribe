@@ -6,7 +6,7 @@ public class TribeManager : MonoBehaviour {
 
     // private properties
     int age;
-    int step;
+    int step; // 0 = mine resource
     int faith;
 
     [SerializeField]
