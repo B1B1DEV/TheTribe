@@ -96,10 +96,13 @@ public class TotemManager : MonoBehaviour {
             
             Debug.Log(g.name + " , " + g.generatedAspect.aspectName +" , " +  g.generatedAspect.isAspectPositive);
         }
-        
-        // Try to Debug.Log() that shit to see if it works
-        // ... And apparently, it does !
-    }
+
+        // Save Generated God (to display in gameover screen)
+        SceneManager.instance.savedTotem = generatedGodPartList;
+
+    // Try to Debug.Log() that shit to see if it works
+    // ... And apparently, it does !
+}
 
 
     //Get every sprite for each god part 

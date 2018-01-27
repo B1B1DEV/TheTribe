@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scoremanager : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-    int score; //4 parties*
+    int score;
     int maxScore;
     int percentageScore;
     public OfferingGenerator offeringGenerator;
     public TotemManager totemManager;
 
+    private List<TotemManager.generatedGodPart> savedTotem;
 
     [SerializeField]
     int pointsPerCategory;
@@ -47,11 +48,26 @@ public class Scoremanager : MonoBehaviour
         percentageScore = (int)((float)score /maxScore);
     }
 
+    public int GetScore()
+    {
+        return percentageScore;
+    }
+
     void AddPointsFromOffering()
     {
         // Get accepted totem part
         TotemManager.partType acceptedPart = offeringGenerator.GetProposedPart();
-        //acceptedPart.category
+
+        // Save
+        TotemManager.generatedGodPart gp = new TotemManager.generatedGodPart();
+        gp.generatedAspect.category = acceptedPart.category;
+        gp.generatedAspect.isAspectPositive = acceptedPart.isAspectPositive;
+        gp.generatedAspect.aspectName = acceptedPart.aspectName;
+        gp.generatedAspect.godAspectSprite = acceptedPart.godAspectSprite;
+        gp.name = "savedTotem";
+        gp.relatedGameObject = null;
+        savedTotem.Add(gp);
+        SceneManager.instance.savedTotem = savedTotem;
 
         // Compare part with ideal
         TotemManager.generatedGodAspect godAspect = totemManager.GetGodHeadGeneratedAspect();
