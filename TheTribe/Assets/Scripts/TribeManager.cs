@@ -6,7 +6,7 @@ public class TribeManager : MonoBehaviour
 {
     // private properties
     int age;
-    public enum Step{Work,Offering,Decision,Epilogue};
+    public enum Step{Work,Offering,Epilogue};
     Step currentStep;
     int faith;
 
@@ -91,7 +91,6 @@ public class TribeManager : MonoBehaviour
             {
                 GameOver();
             }
-
         }
     }
 
@@ -99,7 +98,7 @@ public class TribeManager : MonoBehaviour
     public void CastGaze(bool favorable)
     {
         // check if right step
-        if (currentStep != Step.Decision)
+        if (currentStep != Step.Offering)
         {
             Debug.Log("Wrong step ?! Cannot cast gaze :-(");
             return;
@@ -109,6 +108,8 @@ public class TribeManager : MonoBehaviour
         {
             // Send Event Acceptance
             DivineFavor();
+            // Go to Epilogue step
+            NextStep();
         }
         else
         {
@@ -116,10 +117,9 @@ public class TribeManager : MonoBehaviour
             // Send Event Refusal
             DivineWrath();
             faith -= 1;
+            currentStep = Step.Work;
+            OnNextStepLaunched();
         }
-
-        // Go to Epilogue step
-        NextStep();
     }
 
     // GameOver
@@ -132,7 +132,7 @@ public class TribeManager : MonoBehaviour
     // Test Function
     private void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             NextStep();
         }
