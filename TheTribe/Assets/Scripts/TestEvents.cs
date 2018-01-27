@@ -49,7 +49,7 @@ public class TestEvents : MonoBehaviour {
     {
         //Debug.Log("VillagersBackToWork called");
 
-        foreach(IAVillager villager in FindObjectsOfType<IAVillager>())
+        foreach(IACharacter villager in FindObjectsOfType<IACharacter>())
         {
             villager.GetComponent<Animator>().SetTrigger("Reset");
 

@@ -9,6 +9,7 @@ public class ButtonOnHoverScript : MonoBehaviour, IPointerEnterHandler, IPointer
     public void OnPointerEnter(PointerEventData eventData)
     {
         Animator anim = GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>();
+        GetComponent<AudioSource>().Play();
 
         if(transform.name == "YesButton")
         {
