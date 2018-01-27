@@ -5,6 +5,7 @@ using UnityEngine;
 public class TestEvents : MonoBehaviour {
 
     public GameObject canvasChoice;
+    public AudioSource stepAudio;
 
 	// Subscribe
 	void OnEnable ()
@@ -18,6 +19,8 @@ public class TestEvents : MonoBehaviour {
         TribeManager.OnNewAge += VillagersBackToWork;
         TribeManager.DivineFavor += VillagerRewardedAnimation;
         TribeManager.DivineWrath += VillagerPunishAnimation;
+
+        VillagersBackToWork();
     }
 	
 	// Unsubscribe
@@ -56,7 +59,6 @@ public class TestEvents : MonoBehaviour {
             foreach (AnimatorControllerParameter g in villager.GetComponent<Animator>().parameters)
                 villager.GetComponent<Animator>().ResetTrigger(g.ToString());
         }
-
         
         // Manage God eye feedback
         Animator godAnim = GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>();
@@ -66,6 +68,8 @@ public class TestEvents : MonoBehaviour {
         godAnim.SetTrigger("Reset");
         foreach (AnimatorControllerParameter g in godAnim.parameters)
             godAnim.ResetTrigger(g.ToString());
+
+        StartCoroutine(WaitBeforePlayingStepSound("PeonWorking", true));
     }
 
     // Working or waiting depending on state
@@ -88,6 +92,8 @@ public class TestEvents : MonoBehaviour {
                 canvasChoice.SetActive(true);
                 GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("JobDone");
 
+                StartCoroutine(WaitBeforePlayingStepSound("PriestPropose", false));
+
                 break;
 
             default:
@@ -106,6 +112,8 @@ public class TestEvents : MonoBehaviour {
         }
 
         GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Reject");
+
+        StartCoroutine(WaitBeforePlayingStepSound("thunder", false));
     }
 
     void VillagerRewardedAnimation()
@@ -118,5 +126,18 @@ public class TestEvents : MonoBehaviour {
         }
 
         GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Accept");
+
+        StartCoroutine(WaitBeforePlayingStepSound("Yeah", false));
+    }
+
+    IEnumerator WaitBeforePlayingStepSound(string audioToLoad, bool isLooping)
+    {
+        stepAudio.Stop();
+
+        yield return new WaitForSeconds(0.1f);
+
+        stepAudio.clip = Resources.Load(audioToLoad) as AudioClip;
+        stepAudio.loop = isLooping;
+        stepAudio.Play();
     }
 }
