@@ -52,6 +52,7 @@ public class TribeManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this);
         }
         else
         {
@@ -111,6 +112,8 @@ public class TribeManager : MonoBehaviour
         }
         else
         {
+            // Gestion cas faith=0 à ajouter !!!
+            // Send Event Refusal
             DivineWrath();
             faith -= 1;
         }
@@ -122,7 +125,7 @@ public class TribeManager : MonoBehaviour
     // GameOver
     private void GameOver()
     {
-        Debug.Log("Game Ovah mah bruddha :-(");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScreen");
     }
 
 
