@@ -9,6 +9,7 @@ public class SceneManager : MonoBehaviour
     public TotemManager totemManager;
     public List<TotemManager.generatedGodPart> savedTotem;
     public List<TotemManager.generatedGodPart> trueGod;
+    public int savedScore;
 
     private void Awake()
     {
@@ -31,6 +32,11 @@ public class SceneManager : MonoBehaviour
     public void LoadMenuScene()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+    }
+
+    public void LoadGameOver()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScreen");
     }
 
     public void CloseGame()

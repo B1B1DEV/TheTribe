@@ -32,7 +32,7 @@ public class TribeManager : MonoBehaviour
     public int GetLastAgeIndex() { return lastAgeIndex; }
 
     // Other Managers
-    //public TotemManager totemManager
+    public ScoreManager scoreManager;
 
 
     // Events
@@ -140,7 +140,8 @@ public class TribeManager : MonoBehaviour
     // GameOver
     private void GameOver()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScreen");
+        SceneManager.instance.savedScore = scoreManager.GetScore();
+        SceneManager.instance.LoadGameOver();
     }
 
 
