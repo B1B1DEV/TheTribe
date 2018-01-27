@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class OfferingGenerator : MonoBehaviour
 {
-
     public TotemManager totemManager;
     private List<TotemManager.partType> rejectedList;
     private TotemManager.partType currentProposedpart;
@@ -29,6 +28,11 @@ public class OfferingGenerator : MonoBehaviour
         TribeManager.OnNewAge -= ChangeList;
         TribeManager.OnNextStepLaunched -= GenerateTotemPart;
         TribeManager.DivineWrath -= RemoveFromList;
+    }
+
+    public TotemManager.partType GetProposedPart()
+    {
+        return currentProposedpart;
     }
 
     private void ChangeList()
@@ -56,8 +60,6 @@ public class OfferingGenerator : MonoBehaviour
         rejectedList.Remove(currentProposedpart);
     }
 
-
-
     /*     public struct generatedPart
     {
         public partTypeLabel category;
@@ -66,7 +68,6 @@ public class OfferingGenerator : MonoBehaviour
         public bool isAspectPositive;
     }*/
 
-    //
     private void GenerateTotemPart()
     {
         currentProposedpart = rejectedList[Random.Range(0,rejectedList.Count)];
