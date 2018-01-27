@@ -94,7 +94,7 @@ public class TotemManager : MonoBehaviour {
             
             g.relatedGameObject.GetComponent<SpriteRenderer>().sprite = g.generatedAspect.godAspectSprite;
             
-            //Debug.Log(g.name + " , " + g.generatedAspect.aspectName +" , " +  g.generatedAspect.isAspectPositive);
+            Debug.Log(g.name + " , " + g.generatedAspect.aspectName +" , " +  g.generatedAspect.isAspectPositive);
         }
         
         // Try to Debug.Log() that shit to see if it works
