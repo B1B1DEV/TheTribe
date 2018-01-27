@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 11
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 8
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -77,17 +77,20 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_ShadowMaskMode: 2
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -107,6 +110,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    debug:
+      m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &71983149
 GameObject:
@@ -149,6 +154,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -164,6 +170,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -181,6 +188,80 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+--- !u!1 &224097732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224097734}
+  - component: {fileID: 224097733}
+  m_Layer: 0
+  m_Name: Altar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &224097733
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 224097732}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: efb45bf4bf1430a4395680ca8e029be9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 8, y: 1.71}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+--- !u!4 &224097734
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 224097732}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.27, y: -4.35, z: 0}
+  m_LocalScale: {x: 2.5294147, y: 2.6487658, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &257473130
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +314,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.293661
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -248,7 +329,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!4 &257473134
 Transform:
   m_ObjectHideFlags: 0
@@ -297,62 +377,74 @@ MonoBehaviour:
     aspect:
     - category: 0
       aspectName: Rapace
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 80b77a103d4ded142966db445398f8f0,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 0
       aspectName: Lion
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: f5564c4b466145e4ba0436226a8709e8,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 0
       aspectName: Vache
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: f6955f09d9b6b8143b6f9fb7200a8ab8,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 0
       aspectName: Elephant
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 9dc6757cb0ffc2240b57399e91fe663c,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Ananas
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 1df2d71660c1c244db794e5db5f225fb,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Pomme
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 5e5044a6948ad6140a2cfd35cf00f5ff,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Champignon
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 539d99cdc0300ef48a467048dd4441ed,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 1
       aspectName: Ronce
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 204fab1de1a21104fbe0db1eaf4d0a54,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 2
       aspectName: Amour
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 103597a9dce158345bff86603ccb322e,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 2
       aspectName: Rire
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 1e67d98bbac474a43bc17493cfe16322,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 2
       aspectName: Haine
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: fd27ff20d9a5e5c4da623d174dcdd73a,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 2
       aspectName: Tristesse
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: ee71362c9c0291640bda863b51a48b6f,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
   - name: UpperBody
@@ -360,62 +452,74 @@ MonoBehaviour:
     aspect:
     - category: 0
       aspectName: Rapace
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: c003359083824d241a628800fd67abd3,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 0
       aspectName: Lion
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: edaa41ad96aec1d429dc9d4d841063ac,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 0
       aspectName: Vache
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: e8645e14e9397d54681903d3ee77c8d2,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 0
       aspectName: Elephant
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 6f732df5dd4ca614aaa17fec694f2deb,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Ananas
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 4c9b6b5585ecafb49893c4de09427e33,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Pomme
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 8e40726c1bf2f2845856053a97abe843,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Champignon
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: d894029c71bb4ee4189134393f915df5,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 1
       aspectName: Ronce
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: fba44448eca1d8e4fbbed2879fbf522c,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 2
       aspectName: Amour
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 2e553cd6f4d620f4fb2dedb8c8fb9ee7,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 2
       aspectName: Rire
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 3b4bbc51dabbac44c90cad3fa754b321,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 2
       aspectName: Haine
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 2045e3974c51bff41a95332a6f3310a7,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 2
       aspectName: Tristesse
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 4c312f97f87eadf4d8fd121279d3e49b,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
   - name: LowerBody
@@ -423,62 +527,74 @@ MonoBehaviour:
     aspect:
     - category: 0
       aspectName: Rapace
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 0423dde24caf79540848ecba55c1b5ae,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 0
       aspectName: Lion
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 41eef88714fdd5a41852c008d52313d9,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 0
       aspectName: Vache
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 2cf3f5d0bb20d6446877a849e8551bbc,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 0
       aspectName: Elephant
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: f0feeef092f3a6842888d2dd4578b755,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Ananas
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 1e079c6a13e1f5c4db785f4d87169019,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Pomme
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 31bf8677de2b4524cafa60659dc04313,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Champignon
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 66da9fbdb81654d45ab77c472cc5e7eb,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 1
       aspectName: Ronce
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: d07e3d732acd7ca42a483cee030f3792,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 2
       aspectName: Amour
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: f71299047830563459107a1660b63fa6,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 2
       aspectName: Rire
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 38f9d48c85717ba4684011714318db93,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 2
       aspectName: Haine
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 4bdae296c0ed1df48b139a6440a54cc1,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 2
       aspectName: Tristesse
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 34364dca79f1ed94b8edf70f17d5ee1a,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
   - name: Accessory
@@ -486,62 +602,74 @@ MonoBehaviour:
     aspect:
     - category: 0
       aspectName: Rapace
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: f35bb59b078073b40ad6095ebb1e7dad,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 0
       aspectName: Lion
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: f8bca698b136616449d0c20e484217f4,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 0
       aspectName: Vache
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: d6389e74c88374942aa912eb1c6d73bd,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 0
       aspectName: Elephant
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 221abde3aa0908d40926d892707a566f,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Ananas
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 14629fa6218813d46b5850361c05ca40,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Pomme
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 62a8685898b481840be1d138e47ecfed,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 1
       aspectName: Champignon
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 6fa52c8129a74eb40bcfaf887e3c8fad,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 1
       aspectName: Ronce
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: f8f2812d57ab2684ba6740c941a52d50,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 2
       aspectName: Amour
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: e0ee98e324416f74c9463a8e76063ee2,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 2
       aspectName: Rire
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: e2e554185d6409a4aa9c8faa52c9c824,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 1
     - category: 2
       aspectName: Haine
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 32c0c7e21042005438b4a066b2ccf06f,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
     - category: 2
       aspectName: Tristesse
-      godAspectSprite: {fileID: 0}
+      godAspectSprite: {fileID: 21300000, guid: 748e493fa3666bd4e988c314b53456aa,
+        type: 3}
       totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
 --- !u!4 &623805385
@@ -603,6 +731,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -618,6 +747,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -635,6 +765,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
 --- !u!1 &879520883
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,11 +789,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 879520883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.28, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.54, y: 2.56, z: 0}
+  m_LocalScale: {x: 1.04, y: 1.04, z: 1}
   m_Children: []
   m_Father: {fileID: 1622618818}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &879520885
 SpriteRenderer:
@@ -673,6 +804,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -688,6 +820,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -695,16 +828,17 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 1df2d71660c1c244db794e5db5f225fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &1064488405
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +880,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -761,6 +896,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -778,6 +914,69 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+--- !u!1 &1250261713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1250261716}
+  - component: {fileID: 1250261715}
+  - component: {fileID: 1250261714}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1250261714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250261713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1250261715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250261713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &1250261716
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250261713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1330848573
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +1000,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1330848573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.93, z: 0}
+  m_LocalPosition: {x: -0.43, y: -3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1622618818}
@@ -816,6 +1015,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -831,6 +1031,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -839,15 +1040,16 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 41eef88714fdd5a41852c008d52313d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &1476064823
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,8 +1073,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1476064823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.42, y: 0.42, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.17, y: 0.13, z: 0}
+  m_LocalScale: {x: 0.6978923, y: 0.66737634, z: 1}
   m_Children: []
   m_Father: {fileID: 1622618818}
   m_RootOrder: 3
@@ -886,6 +1088,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -901,6 +1104,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -908,16 +1112,17 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: d6389e74c88374942aa912eb1c6d73bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5, y: 15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &1622618817
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,11 +1145,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1622618817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6202281, y: -0.19051632, z: -3.8395655}
+  m_LocalPosition: {x: 0.66, y: 2.3, z: -3.8395655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 879520884}
   - {fileID: 1830054443}
+  - {fileID: 879520884}
   - {fileID: 1330848574}
   - {fileID: 1476064824}
   m_Father: {fileID: 0}
@@ -991,6 +1196,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1006,6 +1212,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -1023,6 +1230,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
 --- !u!1 &1830054442
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,11 +1254,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1830054442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.08, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.53999996, y: -0.51000005, z: 0}
+  m_LocalScale: {x: 1.16, y: 1.16, z: 1}
   m_Children: []
   m_Father: {fileID: 1622618818}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1830054444
 SpriteRenderer:
@@ -1061,6 +1269,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1076,6 +1285,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -1083,16 +1293,17 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: edaa41ad96aec1d429dc9d4d841063ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &1851579670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,7 +1390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcc23eb515c1ea4a94660b0fa93a9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseRefusalChance: 0
 --- !u!4 &2128027137
 Transform:
   m_ObjectHideFlags: 0
