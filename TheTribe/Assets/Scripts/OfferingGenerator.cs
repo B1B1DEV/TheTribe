@@ -5,6 +5,7 @@ using UnityEngine;
 public class OfferingGenerator : MonoBehaviour
 {
     public TotemManager totemManager;
+    public SpriteRenderer partOfferedRenderer;
     private List<TotemManager.partType> rejectedList;
     private TotemManager.partType currentProposedpart;
 
@@ -70,6 +71,8 @@ public class OfferingGenerator : MonoBehaviour
 
     private void ValidateProposal()
     {
+        partOfferedRenderer.sprite = null;
+
         //Move up the totem as construction the age grows. Flat values for now
         if (TribeManager.instance.GetAge() == 1)
             srToUpdate.transform.parent.position += new Vector3(0, 1.515f, 0);
@@ -88,7 +91,20 @@ public class OfferingGenerator : MonoBehaviour
 
     private void GenerateTotemPart()
     {
-        currentProposedpart = rejectedList[Random.Range(0,rejectedList.Count)];
+        if (TribeManager.instance.GetStep() == TribeManager.Step.Offering)
+        {
+            Debug.Log("GeneratePart");
+            currentProposedpart = rejectedList[Random.Range(0, rejectedList.Count)];
+            partOfferedRenderer.sprite = currentProposedpart.totemAspectSprite;
+
+            if(TribeManager.instance.GetAge() == TribeManager.instance.GetLastAgeIndex())
+            {
+                partOfferedRenderer.transform.Rotate(new Vector3(0, 0, 90));
+                partOfferedRenderer.transform.localScale = new Vector3(0.5f, 0.5f, 0);
+                partOfferedRenderer.transform.localPosition = new Vector3(partOfferedRenderer.transform.localPosition.x, 1.21f, partOfferedRenderer.transform.localPosition.z);
+            }
+        }
+
         /*
         TotemManager.generatedPart gp;
         gp.category = TotemManager.partTypeLabel.Animal;

@@ -28,6 +28,8 @@ public class TribeManager : MonoBehaviour
 
     const int lastAgeIndex = 3;
 
+    public int GetLastAgeIndex() { return lastAgeIndex; }
+
     // Other Managers
     //public TotemManager totemManager
 

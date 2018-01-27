@@ -50,6 +50,10 @@ public class TotemManager : MonoBehaviour {
     void Start ()
     {
         GenerateTotem();
+        if (SceneManager.instance != null)
+        {
+            SceneManager.instance.totemManager = this;
+        }
 	}
 	
 	// Update is called once per frame

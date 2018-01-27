@@ -58,6 +58,9 @@ public class TestEvents : MonoBehaviour {
 
             foreach (AnimatorControllerParameter g in villager.GetComponent<Animator>().parameters)
                 villager.GetComponent<Animator>().ResetTrigger(g.ToString());
+
+            if (villager.GetComponent<IAPriest>())
+                villager.GetComponent<IAPriest>().PutPriestOnGround();
         }
         
         // Manage God eye feedback
@@ -85,8 +88,10 @@ public class TestEvents : MonoBehaviour {
 
                 foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
                 {
-                    Debug.Log(villager.name);
                     villager.GetComponent<Animator>().SetTrigger("JobDone");
+
+                    if (villager.GetComponent<IAPriest>())
+                        villager.GetComponent<IAPriest>().PutPriestOnAltar();
                 }
 
                 canvasChoice.SetActive(true);
