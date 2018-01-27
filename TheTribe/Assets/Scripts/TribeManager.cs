@@ -9,9 +9,6 @@ public class TribeManager : MonoBehaviour {
     int step; // 0 = mine resource
     int faith;
 
-    [SerializeField]
-    float baseRefusalChance;
-
     // public Get Methods
     public int GetAge()
     {
@@ -28,18 +25,40 @@ public class TribeManager : MonoBehaviour {
         return faith;
     }
 
+    [SerializeField]
+    float baseRefusalChance;
 
-	// Use this for initialization
-	void Start ()
+    [SerializeField]
+    int lastStepIndex;
+
+
+    // Use this for initialization
+    void Start ()
     {
         age = 0;
         step = 0;
         faith = 3;
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Next Step
+    public void NextStep()
     {
-		
-	}
+        if (step < lastStepIndex)
+        {
+            step += 1;
+            // + event next step
+        }
+        else
+        {
+            age += 1;
+            step = 0;
+            // + event new age
+        }
+    }
+
+
+    // Next step event
+
+
+
 }
