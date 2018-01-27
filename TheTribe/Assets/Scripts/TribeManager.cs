@@ -9,6 +9,7 @@ public class TribeManager : MonoBehaviour
     public enum Step{Work,Offering,Epilogue};
     Step currentStep;
     int faith;
+    bool newAgeReady;
 
     // public Get Methods
     public int GetAge()
@@ -68,7 +69,8 @@ public class TribeManager : MonoBehaviour
         age = 0;
         currentStep = Step.Work;
         faith = 3;
-	}
+        newAgeReady = false;
+    }
 
     // Next Step
     public void NextStep()
@@ -82,18 +84,28 @@ public class TribeManager : MonoBehaviour
         }
         else
         {
-            if (age < lastAgeIndex)
+            if (newAgeReady)
             {
-                age += 1;
-                currentStep = 0;
-                faith = 3;
-                // + event new age
-                OnNewAge();
+                newAgeReady = false;
+                if (age < lastAgeIndex)
+                {
+                    age += 1;
+                    currentStep = 0;
+                    faith = 3;
+                    // + event new age
+                    OnNewAge();
+                }
+                else
+                {
+                    GameOver();
+                }
             }
             else
             {
-                GameOver();
+                currentStep = 0;
+                OnNextStepLaunched();
             }
+            
         }
     }
 
@@ -111,6 +123,7 @@ public class TribeManager : MonoBehaviour
         {
             // Send Event Acceptance
             DivineFavor();
+            newAgeReady = true;
             // Go to Epilogue step
             NextStep();
         }
@@ -120,8 +133,7 @@ public class TribeManager : MonoBehaviour
             // Send Event Refusal
             DivineWrath();
             faith -= 1;
-            currentStep = Step.Work;
-            OnNextStepLaunched();
+            NextStep();
         }
     }
 
