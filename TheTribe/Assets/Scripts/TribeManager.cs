@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TribeManager : MonoBehaviour {
-
+public class TribeManager : MonoBehaviour
+{
     // private properties
     int age;
     public enum Step{Work,Offering,Decision,Epilogue};
@@ -29,8 +29,7 @@ public class TribeManager : MonoBehaviour {
     const int lastAgeIndex = 3;
 
     // Other Managers
-    //public TotemManager totemManager;
-
+    //public TotemManager totemManager
 
 
     // Events

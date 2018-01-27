@@ -911,6 +911,7 @@ GameObject:
   - component: {fileID: 2089202136}
   - component: {fileID: 2089202137}
   - component: {fileID: 2089202138}
+  - component: {fileID: 2089202139}
   m_Layer: 0
   m_Name: TribeManager
   m_TagString: Untagged
@@ -965,3 +966,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totemManager: {fileID: 1189253828}
+--- !u!114 &2089202139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2089202134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321124ed5b56578428d6ceb50e358a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offeringGenerator: {fileID: 2089202138}
+  totemManager: {fileID: 1189253828}
+  pointsPerCategory: 1
+  pointsPerAlignment: 1
+  pointsPerAspect: 1

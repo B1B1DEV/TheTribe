@@ -21,6 +21,11 @@ public class TestEvents : MonoBehaviour {
     {
         TribeManager.OnNextStepLaunched -= DoTheThing;
         TribeManager.OnNewAge -= WriteSomethingInConsole;
+
+        TribeManager.OnNextStepLaunched -= UpdateVillagersAnimation;
+        TribeManager.OnNewAge -= VillagersBackToWork;
+        TribeManager.DivineFavor -= VillagerRewardedAnimation;
+        TribeManager.DivineWrath -= VillagerPunishAnimation;
     }
 
     // Do the thing
@@ -60,7 +65,7 @@ public class TestEvents : MonoBehaviour {
 
             case TribeManager.Step.Offering:
 
-                foreach (IAVillager villager in FindObjectsOfType<IAVillager>())
+                foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
                 {
                     GetComponent<Animator>().SetTrigger("JobDone");
                 }
@@ -74,7 +79,7 @@ public class TestEvents : MonoBehaviour {
     // Attitude depending on God's decision
     void VillagerPunishAnimation()
     {
-        foreach (IAVillager villager in FindObjectsOfType<IAVillager>())
+        foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
             GetComponent<Animator>().SetTrigger("Reject");
         }
@@ -82,7 +87,7 @@ public class TestEvents : MonoBehaviour {
 
     void VillagerRewardedAnimation()
     {
-        foreach (IAVillager villager in FindObjectsOfType<IAVillager>())
+        foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
             GetComponent<Animator>().SetTrigger("Accept");
         }
