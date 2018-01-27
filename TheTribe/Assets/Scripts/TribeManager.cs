@@ -29,8 +29,7 @@ public class TribeManager : MonoBehaviour
     const int lastAgeIndex = 3;
 
     // Other Managers
-    //public TotemManager totemManager;
-
+    //public TotemManager totemManager
 
 
     // Events

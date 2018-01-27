@@ -977,3 +977,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321124ed5b56578428d6ceb50e358a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offeringGenerator: {fileID: 2089202138}
+  totemManager: {fileID: 1189253828}
+  pointsPerCategory: 1
+  pointsPerAlignment: 1
+  pointsPerAspect: 1
