@@ -6,6 +6,7 @@ public class TotemManager : MonoBehaviour {
 
     public enum partTypeLabel { Animal, Vegetal, Emotion};
 
+    // Structures used for initialisation
     [System.Serializable]
     public struct partType
     {
@@ -24,6 +25,7 @@ public class TotemManager : MonoBehaviour {
         public List<partType> aspect;
     }
 
+    // Structures of the generated god
     public struct generatedPart
     {
         public partTypeLabel category;
@@ -87,9 +89,12 @@ public class TotemManager : MonoBehaviour {
         // THEN for each generated part
         foreach (generatedTotemPart g in generatedTotemPartList)
         {
-            // (TO CONFIRM TO BE DONE HERE) Apply the sprite to the game object related to the part
-
-            Debug.Log(g.name + " , " + g.generatedAspect.aspectName +" , " +  g.generatedAspect.isAspectPositive);
+            if (!g.relatedGameObject.GetComponent<SpriteRenderer>())
+                g.relatedGameObject.AddComponent<SpriteRenderer>();
+            
+            g.relatedGameObject.GetComponent<SpriteRenderer>().sprite = g.generatedAspect.godAspectSprite;
+            
+            //Debug.Log(g.name + " , " + g.generatedAspect.aspectName +" , " +  g.generatedAspect.isAspectPositive);
         }
         
         // Try to Debug.Log() that shit to see if it works
