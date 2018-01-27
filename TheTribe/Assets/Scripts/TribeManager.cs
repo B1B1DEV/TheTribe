@@ -52,7 +52,7 @@ public class TribeManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+           // DontDestroyOnLoad(this);
         }
         else
         {
@@ -75,6 +75,7 @@ public class TribeManager : MonoBehaviour
         {
             currentStep += 1;
             // + event next step
+
             OnNextStepLaunched();
         }
         else
