@@ -98,7 +98,7 @@ public class TotemManager : MonoBehaviour {
         }
 
         // Save Generated God (to display in gameover screen)
-        SceneManager.instance.savedTotem = generatedGodPartList;
+        //SceneManager.instance.savedTotem = generatedGodPartList;
 
     // Try to Debug.Log() that shit to see if it works
     // ... And apparently, it does !
