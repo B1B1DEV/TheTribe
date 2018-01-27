@@ -14,6 +14,8 @@ abstract public class IACharacter : MonoBehaviour {
         characterStateMachine = GetComponent<Animator>();
     }
 	
+    public virtual Animator GetCharacterStateMachine() { return characterStateMachine; }
+
 	// Update is called once per frame
 	void Update () {
 		

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class IAVillager : IACharacter {
 
+    public List<Sprite> toolSpriteList;
+
     // Use this for initialization
     protected override void Start()
     {

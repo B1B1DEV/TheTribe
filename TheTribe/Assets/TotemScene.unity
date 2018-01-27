@@ -116,7 +116,8 @@ NavMeshSettings:
 --- !u!1 &71983149
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 1851794451422562, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
@@ -132,12 +133,13 @@ GameObject:
 --- !u!4 &71983150
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 4957677559507088, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 71983149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.93, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.048, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.558056, y: 0.4688919, z: 1}
   m_Children: []
   m_Father: {fileID: 623805385}
   m_RootOrder: 0
@@ -145,7 +147,8 @@ Transform:
 --- !u!212 &71983151
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 212447679690196596, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 71983149}
   m_Enabled: 1
@@ -181,7 +184,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -269,7 +272,8 @@ Transform:
 --- !u!1 &623805383
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 1090094780796540, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
@@ -285,7 +289,8 @@ GameObject:
 --- !u!114 &623805384
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 114248602398110020, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 623805383}
   m_Enabled: 1
@@ -297,187 +302,260 @@ MonoBehaviour:
   - name: Head
     partGameObject: {fileID: 71983149}
     aspect:
-    - name: 0
+    - category: 0
+      aspectName: Rapace
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-    - name: 1
+    - category: 0
+      aspectName: Lion
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-    - name: 2
+    - category: 0
+      aspectName: Vache
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 0
+      aspectName: Elephant
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Ananas
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Pomme
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Champignon
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
+    - category: 1
+      aspectName: Ronce
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
+    - category: 2
+      aspectName: Amour
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 2
+      aspectName: Rire
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 2
+      aspectName: Haine
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
+    - category: 2
+      aspectName: Tristesse
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
   - name: UpperBody
     partGameObject: {fileID: 627370783}
     aspect:
-    - name: 0
+    - category: 0
+      aspectName: Rapace
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-    - name: 1
+    - category: 0
+      aspectName: Lion
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-    - name: 2
+    - category: 0
+      aspectName: Vache
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 0
+      aspectName: Elephant
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Ananas
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Pomme
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Champignon
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
+    - category: 1
+      aspectName: Ronce
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
+    - category: 2
+      aspectName: Amour
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 2
+      aspectName: Rire
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 2
+      aspectName: Haine
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
+    - category: 2
+      aspectName: Tristesse
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
   - name: LowerBody
     partGameObject: {fileID: 1064488405}
     aspect:
-    - name: 0
+    - category: 0
+      aspectName: Rapace
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-    - name: 1
+    - category: 0
+      aspectName: Lion
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-    - name: 2
+    - category: 0
+      aspectName: Vache
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 0
+      aspectName: Elephant
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Ananas
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Pomme
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Champignon
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
+    - category: 1
+      aspectName: Ronce
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
+    - category: 2
+      aspectName: Amour
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 2
+      aspectName: Rire
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 2
+      aspectName: Haine
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
+    - category: 2
+      aspectName: Tristesse
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
   - name: Accessory
     partGameObject: {fileID: 1694230872}
     aspect:
-    - name: 0
+    - category: 0
+      aspectName: Rapace
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-    - name: 1
+    - category: 0
+      aspectName: Lion
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-    - name: 2
+    - category: 0
+      aspectName: Vache
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 0
+      aspectName: Elephant
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Ananas
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Pomme
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 1
+      aspectName: Champignon
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
       isAspectPositive: 0
-      godPositiveAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      godNegativeAspect:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemPositiveAspects:
-      - {fileID: 0}
-      - {fileID: 0}
-      totemNegativeAspects:
-      - {fileID: 0}
-      - {fileID: 0}
+    - category: 1
+      aspectName: Ronce
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
+    - category: 2
+      aspectName: Amour
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 2
+      aspectName: Rire
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 1
+    - category: 2
+      aspectName: Haine
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
+    - category: 2
+      aspectName: Tristesse
+      godAspectSprite: {fileID: 0}
+      totemAspectSprite: {fileID: 0}
+      isAspectPositive: 0
 --- !u!4 &623805385
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 4922632460460924, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 623805383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -494,7 +572,8 @@ Transform:
 --- !u!1 &627370783
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 1148470463170804, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
@@ -510,7 +589,8 @@ GameObject:
 --- !u!4 &627370784
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 4229995458230414, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 627370783}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -523,7 +603,8 @@ Transform:
 --- !u!212 &627370785
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 212262423752318144, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 627370783}
   m_Enabled: 1
@@ -567,7 +648,8 @@ SpriteRenderer:
 --- !u!1 &1064488405
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 1882503985691438, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
@@ -583,7 +665,8 @@ GameObject:
 --- !u!4 &1064488406
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 4062766639062590, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1064488405}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -596,7 +679,8 @@ Transform:
 --- !u!212 &1064488407
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 212764501105567802, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1064488405}
   m_Enabled: 1
@@ -640,7 +724,8 @@ SpriteRenderer:
 --- !u!1 &1694230872
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 1155700845246986, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
@@ -656,7 +741,8 @@ GameObject:
 --- !u!4 &1694230873
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 4270386125238264, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1694230872}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -669,7 +755,8 @@ Transform:
 --- !u!212 &1694230874
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 212060714940172954, guid: b4c7bc915a0f080489b2014596ae2970,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1694230872}
   m_Enabled: 1
