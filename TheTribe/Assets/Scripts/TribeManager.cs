@@ -26,10 +26,12 @@ public class TribeManager : MonoBehaviour {
         return faith;
     }
 
-    [SerializeField]
-    float baseRefusalChance;
+    const int lastAgeIndex = 3;
 
-    const int lastAgeIndex = 2;
+    // Other Managers
+    //public TotemManager totemManager;
+
+
 
     // Events
     public delegate void NextStepEvent();
@@ -40,6 +42,9 @@ public class TribeManager : MonoBehaviour {
 
     public delegate void Favor();
     public static event Favor DivineFavor;
+
+    public delegate void Wrath();
+    public static event Wrath DivineWrath;
 
     // Singleton
     public static TribeManager instance;
@@ -107,6 +112,7 @@ public class TribeManager : MonoBehaviour {
         }
         else
         {
+            DivineWrath();
             faith -= 1;
         }
 

@@ -6,19 +6,15 @@ public class TotemManager : MonoBehaviour {
 
     public enum partTypeLabel { Animal, Vegetal, Emotion};
 
+    // Structures used for initialisation
     [System.Serializable]
     public struct partType
     {
-        public partTypeLabel name;
-
-        [HideInInspector]
+        public partTypeLabel category;
+        public string aspectName;
+        public Sprite godAspectSprite;
+        public Sprite totemAspectSprite;
         public bool isAspectPositive;
-
-        [Header("Respect the same order for god AND totem related aspect sprites!")]
-        public List<Sprite> godPositiveAspect;
-        public List<Sprite> godNegativeAspect;
-        public List<Sprite> totemPositiveAspects;
-        public List<Sprite> totemNegativeAspects;
     }
 
     [System.Serializable]
@@ -27,15 +23,15 @@ public class TotemManager : MonoBehaviour {
         public string name;
         public GameObject partGameObject;
         public List<partType> aspect;
-        float value;
     }
 
+    // Structures of the generated god
     public struct generatedPart
     {
-        public partTypeLabel name;
-        public bool isPositive;
-        public Sprite totemAspectSprite;
+        public partTypeLabel category;
+        public string aspectName;
         public Sprite godAspectSprite;
+        public bool isAspectPositive;
     }
 
     public struct generatedTotemPart
@@ -59,9 +55,10 @@ public class TotemManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
+        if (Input.GetKeyDown(KeyCode.R))
+            GenerateTotem();
 	}
-
+    
     void GenerateTotem()
     {
         // For each part
@@ -78,67 +75,36 @@ public class TotemManager : MonoBehaviour {
             int i = Random.Range(0, part.aspect.Count);
             chosenAspect = part.aspect[i];
 
-            gp.name = chosenAspect.name;
-
-            // THEN apply random on aspect boolean value 
-            if (Random.value > 0.5f)
-                gp.isPositive = true;
-            else
-                gp.isPositive = false;
-            
-
-
-            // THEN choose randomly a sprite in either positive or negative aspect depending on bool value 
-            int k = Random.Range(0, 2);
-            if (gp.isPositive)
-            {
-                gp.totemAspectSprite = chosenAspect.totemPositiveAspects[k];
-                gp.godAspectSprite = chosenAspect.godPositiveAspect[k];
-            }
-            else
-            {
-                gp.totemAspectSprite = chosenAspect.totemNegativeAspects[k];
-                gp.godAspectSprite = chosenAspect.godNegativeAspect[k];
-            }
+            // Retrieve necessary informations
+            gp.category = chosenAspect.category;
+            gp.aspectName = chosenAspect.aspectName;
+            gp.isAspectPositive = chosenAspect.isAspectPositive;
+            gp.godAspectSprite = chosenAspect.godAspectSprite;
 
             gtp.generatedAspect = gp;
 
-            // Add the generated part to the list
             generatedTotemPartList.Add(gtp);
         }
-
 
         // THEN for each generated part
         foreach (generatedTotemPart g in generatedTotemPartList)
         {
-            // Apply the sprite to the game object related to the part
-
-            Debug.Log(g.name + " , " + g.generatedAspect.isPositive);
+            if (!g.relatedGameObject.GetComponent<SpriteRenderer>())
+                g.relatedGameObject.AddComponent<SpriteRenderer>();
+            
+            g.relatedGameObject.GetComponent<SpriteRenderer>().sprite = g.generatedAspect.godAspectSprite;
+            
+            //Debug.Log(g.name + " , " + g.generatedAspect.aspectName +" , " +  g.generatedAspect.isAspectPositive);
         }
         
         // Try to Debug.Log() that shit to see if it works
         // ... And apparently, it does !
     }
 
-    public Sprite GetHeadGodAspect()
-    {
-        return SearchPartInGeneratedTotem("Head");
-    }
-
-    public Sprite GetUpperbodyGodAspect()
-    {
-        return SearchPartInGeneratedTotem("UpperBody");
-    }
-
-    public Sprite GetLowerbodyGodAspect()
-    {
-        return SearchPartInGeneratedTotem("LowerBody");
-    }
-
-    public Sprite GetAccessoryGodAspect()
-    {
-        return SearchPartInGeneratedTotem("Accessory");
-    }
+    public Sprite GetHeadGodAspect() { return SearchPartInGeneratedTotem("Head"); }
+    public Sprite GetUpperbodyGodAspect() { return SearchPartInGeneratedTotem("UpperBody");}
+    public Sprite GetLowerbodyGodAspect() { return SearchPartInGeneratedTotem("LowerBody");}
+    public Sprite GetAccessoryGodAspect() { return SearchPartInGeneratedTotem("Accessory");}
 
     Sprite SearchPartInGeneratedTotem(string partName)
     {
@@ -147,6 +113,31 @@ public class TotemManager : MonoBehaviour {
             if (g.name == partName)
             {
                 return g.generatedAspect.godAspectSprite;
+            }
+        }
+
+        return null;
+    }
+
+    public List<partType> GetHeadPossibleAspects() { return RetrieveAllTotemPartPossibilities("Head"); }
+    public List<partType> GetUpperbodyPossibleAspects() { return RetrieveAllTotemPartPossibilities("UpperBody"); }
+    public List<partType> GetLowerbodyPossibleAspects() { return RetrieveAllTotemPartPossibilities("LowerBody"); }
+    public List<partType> GetAccessoryPossibleAspects() { return RetrieveAllTotemPartPossibilities("Accessory"); }
+
+    List<partType> RetrieveAllTotemPartPossibilities(string totemPartName)
+    {
+        List<partType> resultList = new List<partType>();
+
+        foreach (totemPart g in allTotemPartList)
+        {
+            if (g.name == totemPartName)
+            {
+                foreach (partType part in g.aspect)
+                {
+                    resultList.Add(part);
+                }
+
+                return resultList;
             }
         }
 
