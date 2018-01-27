@@ -81,7 +81,8 @@ public class TestEvents : MonoBehaviour {
 
                 foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
                 {
-                    GetComponent<Animator>().SetTrigger("JobDone");
+                    Debug.Log(villager.name);
+                    villager.GetComponent<Animator>().SetTrigger("JobDone");
                 }
 
                 canvasChoice.SetActive(true);
@@ -101,7 +102,7 @@ public class TestEvents : MonoBehaviour {
 
         foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
-            GetComponent<Animator>().SetTrigger("Reject");
+            villager.GetComponent<Animator>().SetTrigger("Reject");
         }
 
         GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Reject");
@@ -113,7 +114,7 @@ public class TestEvents : MonoBehaviour {
 
         foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
-            GetComponent<Animator>().SetTrigger("Accept");
+            villager.GetComponent<Animator>().SetTrigger("Accept");
         }
 
         GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Accept");
