@@ -31,6 +31,29 @@ public class TribeManager : MonoBehaviour {
     [SerializeField]
     int lastStepIndex;
 
+    // Events
+    public delegate void NextStepEvent();
+    public static event NextStepEvent OnNextStepLaunched;
+
+    public delegate void NextAgeEvent();
+    public static event NextAgeEvent OnNewAge;
+
+    //TribeManager.OnNextStepLaunched += MyMethod();
+    //TribeManager.OnNewAge += MyMethod();
+
+    // Singleton
+    public static TribeManager instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
 
     // Use this for initialization
     void Start ()
@@ -47,17 +70,26 @@ public class TribeManager : MonoBehaviour {
         {
             step += 1;
             // + event next step
+            OnNextStepLaunched();
         }
         else
         {
             age += 1;
             step = 0;
             // + event new age
+            OnNewAge();
         }
     }
 
 
-    // Next step event
+    // Test Function
+    private void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            OnNextStepLaunched();
+        }
+    }
 
 
 
