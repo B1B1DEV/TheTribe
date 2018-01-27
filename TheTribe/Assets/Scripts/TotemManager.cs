@@ -159,7 +159,7 @@ public class TotemManager : MonoBehaviour {
         {
             if (g.name == godPartName)
             {
-                return g;
+                return g.generatedAspect;
             }
         }
 
