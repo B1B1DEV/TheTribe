@@ -26,7 +26,7 @@ public class TotemManager : MonoBehaviour {
     }
 
     // Structures of the generated god
-    public struct generatedPart
+    public struct generatedGodAspect
     {
         public partTypeLabel category;
         public string aspectName;
@@ -34,17 +34,17 @@ public class TotemManager : MonoBehaviour {
         public bool isAspectPositive;
     }
 
-    public struct generatedTotemPart
+    public struct generatedGodPart
     {
         public string name;
         public GameObject relatedGameObject;
-        public generatedPart generatedAspect;
+        public generatedGodAspect generatedAspect;
     }
 
     public List<totemPart> allTotemPartList;
-    List<generatedTotemPart> generatedTotemPartList = new List<generatedTotemPart>();
+    List<generatedGodPart> generatedGodPartList = new List<generatedGodPart>();
 
-    public List<generatedTotemPart> GetTotemGeneratedParts() { return generatedTotemPartList; }
+    public List<generatedGodPart> GetGodGeneratedAspects() { return generatedGodPartList; }
 
     // Use this for initialization
     void Start ()
@@ -64,11 +64,11 @@ public class TotemManager : MonoBehaviour {
         // For each part
         foreach(totemPart part in allTotemPartList)
         {
-            generatedTotemPart gtp;
+            generatedGodPart gtp;
             gtp.name = part.name;
             gtp.relatedGameObject = part.partGameObject;
 
-            generatedPart gp;
+            generatedGodAspect gp;
             partType chosenAspect;
 
             // Choose a random aspect type 
@@ -83,11 +83,11 @@ public class TotemManager : MonoBehaviour {
 
             gtp.generatedAspect = gp;
 
-            generatedTotemPartList.Add(gtp);
+            generatedGodPartList.Add(gtp);
         }
 
         // THEN for each generated part
-        foreach (generatedTotemPart g in generatedTotemPartList)
+        foreach (generatedGodPart g in generatedGodPartList)
         {
             if (!g.relatedGameObject.GetComponent<SpriteRenderer>())
                 g.relatedGameObject.AddComponent<SpriteRenderer>();
@@ -101,6 +101,8 @@ public class TotemManager : MonoBehaviour {
         // ... And apparently, it does !
     }
 
+
+    //Get every sprite for each god part 
     public Sprite GetHeadGodAspect() { return SearchPartInGeneratedTotem("Head"); }
     public Sprite GetUpperbodyGodAspect() { return SearchPartInGeneratedTotem("UpperBody");}
     public Sprite GetLowerbodyGodAspect() { return SearchPartInGeneratedTotem("LowerBody");}
@@ -108,7 +110,7 @@ public class TotemManager : MonoBehaviour {
 
     Sprite SearchPartInGeneratedTotem(string partName)
     {
-        foreach (generatedTotemPart g in generatedTotemPartList)
+        foreach (generatedGodPart g in generatedGodPartList)
         {
             if (g.name == partName)
             {
@@ -119,6 +121,7 @@ public class TotemManager : MonoBehaviour {
         return null;
     }
 
+    //Get every possibility for each totem part 
     public List<partType> GetHeadPossibleAspects() { return RetrieveAllTotemPartPossibilities("Head"); }
     public List<partType> GetUpperbodyPossibleAspects() { return RetrieveAllTotemPartPossibilities("UpperBody"); }
     public List<partType> GetLowerbodyPossibleAspects() { return RetrieveAllTotemPartPossibilities("LowerBody"); }
@@ -142,5 +145,24 @@ public class TotemManager : MonoBehaviour {
         }
 
         return null;
+    }
+
+    //Get each generated part from current God 
+    public generatedGodAspect GetGodHeadGeneratedAspect() { return RetrieveGodGeneratedPart("Head"); }
+    public generatedGodAspect GetGodUpperbodyGeneratedAspect() { return RetrieveGodGeneratedPart("UpperBody"); }
+    public generatedGodAspect GetGodLowerbodyGeneratedAspect() { return RetrieveGodGeneratedPart("LowerBody"); }
+    public generatedGodAspect GetGodAccessoryGeneratedAspect() { return RetrieveGodGeneratedPart("Accessory"); }
+
+    generatedGodAspect RetrieveGodGeneratedPart(string godPartName)
+    {
+        foreach (generatedGodPart g in generatedGodPartList)
+        {
+            if (g.name == godPartName)
+            {
+                return g;
+            }
+        }
+
+        return default(generatedGodAspect);
     }
 }

@@ -3,32 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class VillagerBehaviour : StateMachineBehaviour {
-
-    public enum Behaviours { Working, Offering, Punished, Rewarded };
-    public Behaviours BehaviourToAdopt;
+    
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        IAVillager villagerScript = animator.GetComponent<IAVillager>();
-
-	    switch(BehaviourToAdopt)
-        {
-            case Behaviours.Offering:
-                villagerScript.SwitchToOfferingSprite();
-                break;
-
-            case Behaviours.Punished:
-                villagerScript.SwitchToPunishedSprite();
-                break;
-
-            case Behaviours.Rewarded:
-                villagerScript.SwitchToRewardedSprite();
-                break;
-
-            default:
-                break;
-        }
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
