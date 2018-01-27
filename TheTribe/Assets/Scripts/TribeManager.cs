@@ -6,7 +6,8 @@ public class TribeManager : MonoBehaviour {
 
     // private properties
     int age;
-    int step; // 0 = mine resource
+    public enum Step{Work,Offering,Decision,Epilogue};
+    Step currentStep;
     int faith;
 
     // public Get Methods
@@ -15,9 +16,9 @@ public class TribeManager : MonoBehaviour {
         return age;
     }
 
-    public int GetStep()
+    public Step GetStep()
     {
-        return step;
+        return currentStep;
     }
 
     public int GetFaith()
@@ -28,8 +29,7 @@ public class TribeManager : MonoBehaviour {
     [SerializeField]
     float baseRefusalChance;
 
-    [SerializeField]
-    int lastStepIndex;
+    const int lastAgeIndex = 2;
 
     // Events
     public delegate void NextStepEvent();
@@ -38,8 +38,8 @@ public class TribeManager : MonoBehaviour {
     public delegate void NextAgeEvent();
     public static event NextAgeEvent OnNewAge;
 
-    //TribeManager.OnNextStepLaunched += MyMethod();
-    //TribeManager.OnNewAge += MyMethod();
+    public delegate void Favor();
+    public static event Favor DivineFavor;
 
     // Singleton
     public static TribeManager instance;
@@ -59,26 +59,65 @@ public class TribeManager : MonoBehaviour {
     void Start ()
     {
         age = 0;
-        step = 0;
+        currentStep = Step.Work;
         faith = 3;
 	}
 
     // Next Step
     public void NextStep()
     {
-        if (step < lastStepIndex)
+        if (currentStep < Step.Epilogue)
         {
-            step += 1;
+            currentStep += 1;
             // + event next step
             OnNextStepLaunched();
         }
         else
         {
-            age += 1;
-            step = 0;
-            // + event new age
-            OnNewAge();
+            if (age < lastAgeIndex)
+            {
+                age += 1;
+                currentStep = 0;
+                faith = 3;
+                // + event new age
+                OnNewAge();
+            }
+            else
+            {
+                GameOver();
+            }
+
         }
+    }
+
+    // Gaze Function
+    public void CastGaze(bool favorable)
+    {
+        // check if right step
+        if (currentStep != Step.Decision)
+        {
+            Debug.Log("Wrong step ?! Cannot cast gaze :-(");
+            return;
+        }
+
+        if (favorable)
+        {
+            // Send Event Acceptance
+            DivineFavor();
+        }
+        else
+        {
+            faith -= 1;
+        }
+
+        // Go to Epilogue step
+        NextStep();
+    }
+
+    // GameOver
+    private void GameOver()
+    {
+        Debug.Log("Game Ovah mah bruddha :-(");
     }
 
 
@@ -87,10 +126,8 @@ public class TribeManager : MonoBehaviour {
     {
         if (Input.anyKeyDown)
         {
-            OnNextStepLaunched();
+            NextStep();
         }
     }
-
-
 
 }
