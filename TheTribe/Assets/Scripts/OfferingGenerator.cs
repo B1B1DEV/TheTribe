@@ -8,6 +8,8 @@ public class OfferingGenerator : MonoBehaviour
     private List<TotemManager.partType> rejectedList;
     private TotemManager.partType currentProposedpart;
 
+    SpriteRenderer srToUpdate;
+
     // Use this for initialization
     void Start ()
     {
@@ -20,6 +22,7 @@ public class OfferingGenerator : MonoBehaviour
         TribeManager.OnNewAge += ChangeList;
         TribeManager.OnNextStepLaunched += GenerateTotemPart;
         TribeManager.DivineWrath += RemoveFromList;
+        TribeManager.DivineFavor += ValidateProposal;
     }
 
     // Unsubscribe
@@ -28,6 +31,7 @@ public class OfferingGenerator : MonoBehaviour
         TribeManager.OnNewAge -= ChangeList;
         TribeManager.OnNextStepLaunched -= GenerateTotemPart;
         TribeManager.DivineWrath -= RemoveFromList;
+        TribeManager.DivineFavor -= ValidateProposal;
     }
 
     public TotemManager.partType GetProposedPart()
@@ -42,15 +46,19 @@ public class OfferingGenerator : MonoBehaviour
         {
             case 0:
                 rejectedList = totemManager.GetHeadPossibleAspects();
+                srToUpdate = totemManager.gameObject.transform.Find("TotemHead").GetComponent<SpriteRenderer>();
                 break;
             case 1:
                 rejectedList = totemManager.GetUpperbodyPossibleAspects();
+                srToUpdate = totemManager.gameObject.transform.Find("TotemUpperBody").GetComponent<SpriteRenderer>();
                 break;
             case 2:
                 rejectedList = totemManager.GetLowerbodyPossibleAspects();
+                srToUpdate = totemManager.gameObject.transform.Find("TotemLowerBody").GetComponent<SpriteRenderer>();
                 break;
             case 3:
                 rejectedList = totemManager.GetAccessoryPossibleAspects();
+                srToUpdate = totemManager.gameObject.transform.Find("TotemAccessory").GetComponent<SpriteRenderer>();
                 break;
         }
     }
@@ -60,6 +68,16 @@ public class OfferingGenerator : MonoBehaviour
         rejectedList.Remove(currentProposedpart);
     }
 
+    private void ValidateProposal()
+    {
+        //Move up the totem as construction the age grows. Flat values for now
+        if (TribeManager.instance.GetAge() == 1)
+            srToUpdate.transform.parent.position += new Vector3(0, 1.515f, 0);
+        else if(TribeManager.instance.GetAge() == 2)
+            srToUpdate.transform.parent.position += new Vector3(0, 1.15f, 0);
+
+        srToUpdate.sprite = currentProposedpart.totemAspectSprite;
+    }
     /*     public struct generatedPart
     {
         public partTypeLabel category;

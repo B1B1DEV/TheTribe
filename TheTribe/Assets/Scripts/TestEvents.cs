@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class TestEvents : MonoBehaviour {
 
+    public GameObject canvasChoice;
+
 	// Subscribe
 	void OnEnable ()
     {
+        canvasChoice.SetActive(false);
+
         TribeManager.OnNextStepLaunched += DoTheThing;
         TribeManager.OnNewAge += WriteSomethingInConsole;
 
@@ -52,6 +56,16 @@ public class TestEvents : MonoBehaviour {
             foreach (AnimatorControllerParameter g in villager.GetComponent<Animator>().parameters)
                 villager.GetComponent<Animator>().ResetTrigger(g.ToString());
         }
+
+        
+        // Manage God eye feedback
+        Animator godAnim = GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>();
+
+        godAnim.SetBool("IsLookingConfirmButton", false);
+        godAnim.SetBool("IsLookingRefuseButton", false);
+        godAnim.SetTrigger("Reset");
+        foreach (AnimatorControllerParameter g in godAnim.parameters)
+            godAnim.ResetTrigger(g.ToString());
     }
 
     // Working or waiting depending on state
@@ -69,6 +83,10 @@ public class TestEvents : MonoBehaviour {
                 {
                     GetComponent<Animator>().SetTrigger("JobDone");
                 }
+
+                canvasChoice.SetActive(true);
+                GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("JobDone");
+
                 break;
 
             default:
@@ -79,17 +97,25 @@ public class TestEvents : MonoBehaviour {
     // Attitude depending on God's decision
     void VillagerPunishAnimation()
     {
+        canvasChoice.SetActive(false);
+
         foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
             GetComponent<Animator>().SetTrigger("Reject");
         }
+
+        GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Reject");
     }
 
     void VillagerRewardedAnimation()
     {
+        canvasChoice.SetActive(false);
+
         foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
             GetComponent<Animator>().SetTrigger("Accept");
         }
+
+        GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Accept");
     }
 }
