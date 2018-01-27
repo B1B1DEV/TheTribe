@@ -66,6 +66,7 @@ public class OfferingGenerator : MonoBehaviour
 
     private void RemoveFromList()
     {
+        partOfferedRenderer.sprite = null;
         rejectedList.Remove(currentProposedpart);
     }
 

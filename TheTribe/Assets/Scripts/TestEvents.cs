@@ -6,14 +6,16 @@ public class TestEvents : MonoBehaviour {
 
     public GameObject canvasChoice;
     public AudioSource stepAudio;
+    public GameObject sunlight;
+    public GameObject lightning;
 
 	// Subscribe
 	void OnEnable ()
     {
         canvasChoice.SetActive(false);
 
-        TribeManager.OnNextStepLaunched += DoTheThing;
-        TribeManager.OnNewAge += WriteSomethingInConsole;
+        //TribeManager.OnNextStepLaunched += DoTheThing;
+        //TribeManager.OnNewAge += WriteSomethingInConsole;
 
         TribeManager.OnNextStepLaunched += UpdateVillagersAnimation;
         TribeManager.OnNewAge += VillagersBackToWork;
@@ -26,8 +28,8 @@ public class TestEvents : MonoBehaviour {
 	// Unsubscribe
 	void OnDisable ()
     {
-        TribeManager.OnNextStepLaunched -= DoTheThing;
-        TribeManager.OnNewAge -= WriteSomethingInConsole;
+        //TribeManager.OnNextStepLaunched -= DoTheThing;
+        //TribeManager.OnNewAge -= WriteSomethingInConsole;
 
         TribeManager.OnNextStepLaunched -= UpdateVillagersAnimation;
         TribeManager.OnNewAge -= VillagersBackToWork;
@@ -50,14 +52,15 @@ public class TestEvents : MonoBehaviour {
     // Put villagers back to work
     void VillagersBackToWork()
     {
-        //Debug.Log("VillagersBackToWork called");
+        sunlight.SetActive(false);
+        lightning.SetActive(false);
 
-        foreach(IACharacter villager in FindObjectsOfType<IACharacter>())
+        foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
             villager.GetComponent<Animator>().SetTrigger("Reset");
 
-            foreach (AnimatorControllerParameter g in villager.GetComponent<Animator>().parameters)
-                villager.GetComponent<Animator>().ResetTrigger(g.ToString());
+            //foreach (AnimatorControllerParameter g in villager.GetComponent<Animator>().parameters)
+              //  villager.GetComponent<Animator>().ResetTrigger(g.ToString());
 
             if (villager.GetComponent<IAPriest>())
                 villager.GetComponent<IAPriest>().PutPriestOnGround();
@@ -69,6 +72,7 @@ public class TestEvents : MonoBehaviour {
         godAnim.SetBool("IsLookingConfirmButton", false);
         godAnim.SetBool("IsLookingRefuseButton", false);
         godAnim.SetTrigger("Reset");
+
         foreach (AnimatorControllerParameter g in godAnim.parameters)
             godAnim.ResetTrigger(g.ToString());
 
@@ -110,6 +114,7 @@ public class TestEvents : MonoBehaviour {
     void VillagerPunishAnimation()
     {
         canvasChoice.SetActive(false);
+        lightning.SetActive(true);
 
         foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
@@ -117,13 +122,14 @@ public class TestEvents : MonoBehaviour {
         }
 
         GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Reject");
-
         StartCoroutine(WaitBeforePlayingStepSound("thunder", false));
     }
 
     void VillagerRewardedAnimation()
     {
         canvasChoice.SetActive(false);
+        sunlight.SetActive(true);
+        StartCoroutine(Sunshine());
 
         foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
@@ -131,7 +137,6 @@ public class TestEvents : MonoBehaviour {
         }
 
         GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Accept");
-
         StartCoroutine(WaitBeforePlayingStepSound("Yeah", false));
     }
 
@@ -144,5 +149,38 @@ public class TestEvents : MonoBehaviour {
         stepAudio.clip = Resources.Load(audioToLoad) as AudioClip;
         stepAudio.loop = isLooping;
         stepAudio.Play();
+    }
+
+    IEnumerator Sunshine()
+    {
+        Color colorToLerpFrom = sunlight.GetComponent<SpriteRenderer>().color;
+        Color colorToLerpTowards = new Color(1, 0.7f, 0f);
+
+        while(sunlight.gameObject.activeInHierarchy)
+        {
+            float time = 0.5f;
+
+            while(time > 0 && sunlight.gameObject.activeInHierarchy)
+            {
+                Color mColor = sunlight.GetComponent<SpriteRenderer>().color;
+                mColor = Color.Lerp(mColor, colorToLerpTowards, Time.deltaTime * 4f);
+                time -= Time.deltaTime;
+                sunlight.GetComponent<SpriteRenderer>().color = mColor;
+
+                yield return null;
+            }
+
+            time = 0.5f;
+
+            while(time > 0 && sunlight.gameObject.activeInHierarchy)
+            {
+                Color mColor = sunlight.GetComponent<SpriteRenderer>().color;
+                mColor = Color.Lerp(mColor, colorToLerpFrom, Time.deltaTime * 4f);
+                time -= Time.deltaTime;
+                sunlight.GetComponent<SpriteRenderer>().color = mColor;
+
+                yield return null;
+            }
+        }
     }
 }
