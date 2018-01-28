@@ -56,7 +56,16 @@ public class SceneManager : MonoBehaviour
     // Display Totem
     private void DisplayTotem(List<TotemManager.generatedGodPart> listOfParts, Transform parent)
     {
-        foreach (TotemManager.generatedGodPart g in listOfParts)
+		if (listOfParts == null)
+		{
+			parent.gameObject.transform.Find("TotemHead").GetComponent<SpriteRenderer>().sprite = null;
+			parent.gameObject.transform.Find("TotemUpperBody").GetComponent<SpriteRenderer>().sprite = null;
+			parent.gameObject.transform.Find("TotemLowerBody").GetComponent<SpriteRenderer>().sprite = null;
+			parent.gameObject.transform.Find("TotemAccessory").GetComponent<SpriteRenderer>().sprite = null;
+			return;
+		}
+
+		foreach (TotemManager.generatedGodPart g in listOfParts)
         {
             Debug.Log(g.name);
             if (g.name.Contains("Head"))
