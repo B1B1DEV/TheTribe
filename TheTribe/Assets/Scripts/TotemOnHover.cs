@@ -10,15 +10,14 @@ public class TotemOnHover : MonoBehaviour
     public void OnMouseEnter()
     {
         Animator anim = GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>();
-        GetComponent<AudioSource>().Play();
 
-        if(transform.name == "YesButton")
+        if(transform.name == "Totem")
         {
             anim.SetBool("IsLookingConfirmButton", true);
             anim.gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 
-        else if(transform.name == "NopeButton")
+        else if(transform.name == "God")
         {
             anim.SetBool("IsLookingRefuseButton", true);
             anim.gameObject.GetComponent<SpriteRenderer>().flipX = true;
@@ -28,27 +27,17 @@ public class TotemOnHover : MonoBehaviour
     public void OnMouseExit()
     {
         Animator anim = GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>();
-       
 
-        if (transform.name == "YesButton")
+        if (transform.name == "Totem")
         {
             anim.SetBool("IsLookingConfirmButton", false);
         }
 
-        else if (transform.name == "NopeButton")
+        else if (transform.name == "God")
         {
             anim.SetBool("IsLookingRefuseButton", false);
         }
         
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
