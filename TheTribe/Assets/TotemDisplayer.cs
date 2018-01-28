@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class TotemDisplayer : MonoBehaviour
 {
+    public string totemOrGod;
 
 	// Use this for initialization
 	void Start ()
     {
-        SceneManager.instance.DisplayLastTotemInMenu(this.transform);
+        SceneManager.instance.DisplayTotemOrGod(this.transform, totemOrGod);
 	}
+
+    public void UnDisplayTotem()
+    {
+        this.gameObject.SetActive(false);
+    }
 	
 }

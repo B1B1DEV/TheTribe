@@ -45,9 +45,12 @@ public class SceneManager : MonoBehaviour
     }
 
     // Public method to call display
-    public void DisplayLastTotemInMenu(Transform parent)
+    public void DisplayTotemOrGod(Transform parent,string totemOrGod)
     {
-        DisplayTotem(savedTotem, parent);
+        if (totemOrGod=="God")
+            DisplayTotem(trueGod, parent);
+        else
+            DisplayTotem(savedTotem, parent);
     }
 
     // Display Totem
@@ -55,6 +58,7 @@ public class SceneManager : MonoBehaviour
     {
         foreach (TotemManager.generatedGodPart g in listOfParts)
         {
+            Debug.Log(g.name);
             if (g.name.Contains("Head"))
             {
                 SpriteRenderer sp = parent.gameObject.transform.Find("TotemHead").GetComponent<SpriteRenderer>();
@@ -81,7 +85,7 @@ public class SceneManager : MonoBehaviour
 
             //g.relatedGameObject.GetComponent<SpriteRenderer>().sprite = g.generatedAspect.godAspectSprite;
 
-            Debug.Log(g.name + " , " + g.generatedAspect.aspectName + " , " + g.generatedAspect.isAspectPositive);
+            //Debug.Log(g.name + " , " + g.generatedAspect.aspectName + " , " + g.generatedAspect.isAspectPositive);
         }
     }
 

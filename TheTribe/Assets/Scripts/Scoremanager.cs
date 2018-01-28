@@ -65,8 +65,25 @@ public class ScoreManager : MonoBehaviour
         gp.generatedAspect.category = acceptedPart.category;
         gp.generatedAspect.isAspectPositive = acceptedPart.isAspectPositive;
         gp.generatedAspect.aspectName = acceptedPart.aspectName;
-        gp.generatedAspect.godAspectSprite = acceptedPart.godAspectSprite;
-        gp.name = "savedTotem";
+        gp.generatedAspect.godAspectSprite = acceptedPart.totemAspectSprite;
+        int age = TribeManager.instance.GetAge();
+
+        switch (age)
+        {
+            case 0:
+                gp.name = "Head";
+                break;
+            case 1:
+                gp.name = "UpperBody";
+                break;
+            case 2:
+                gp.name = "LowerBody";
+                break;
+            case 3:
+                gp.name = "Accessory";
+                break;
+        }
+        
         gp.relatedGameObject = null;
         savedTotem.Add(gp);
         SceneManager.instance.savedTotem = savedTotem;
