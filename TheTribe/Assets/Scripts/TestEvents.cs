@@ -197,33 +197,22 @@ public class TestEvents : MonoBehaviour {
 
     IEnumerator Sunshine()
     {
-        Color colorToLerpFrom = sunlight.GetComponent<SpriteRenderer>().color;
-        Color colorToLerpTowards = new Color(1, 0.7f, 0f);
+        Color c = sunlight.GetComponent<SpriteRenderer>().color;
 
-        while(sunlight.gameObject.activeInHierarchy)
+        while (sunlight.gameObject.activeInHierarchy)
         {
-            float time = 0.5f;
-
-            while(time > 0 && sunlight.gameObject.activeInHierarchy)
+            while (c.a > 0.5f)
             {
-                Color mColor = sunlight.GetComponent<SpriteRenderer>().color;
-                mColor = Color.Lerp(mColor, colorToLerpTowards, Time.deltaTime * 4f);
-                time -= Time.deltaTime;
-                sunlight.GetComponent<SpriteRenderer>().color = mColor;
-
-                yield return null;
+                c.a -= Time.deltaTime * 0.6f;
+                sunlight.GetComponent<SpriteRenderer>().color = c;
+                yield return new WaitForEndOfFrame();
             }
 
-            time = 0.5f;
-
-            while(time > 0 && sunlight.gameObject.activeInHierarchy)
+            while (c.a < 1f)
             {
-                Color mColor = sunlight.GetComponent<SpriteRenderer>().color;
-                mColor = Color.Lerp(mColor, colorToLerpFrom, Time.deltaTime * 4f);
-                time -= Time.deltaTime;
-                sunlight.GetComponent<SpriteRenderer>().color = mColor;
-
-                yield return null;
+                c.a += Time.deltaTime * 0.6f;
+                sunlight.GetComponent<SpriteRenderer>().color = c;
+                yield return new WaitForEndOfFrame();
             }
         }
     }
