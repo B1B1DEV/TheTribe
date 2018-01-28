@@ -72,7 +72,7 @@ public class OfferingGenerator : MonoBehaviour
         partOfferedRenderer.sprite = null;
         rejectedList.Remove(currentProposedpart);
         Debug.Log("Try again");
-        TribeManager.instance.CallNextStepCoroutine();
+        TribeManager.instance.CallNextStepCoroutine(2.5f);
     }
 
     private void ValidateProposal()
@@ -86,7 +86,7 @@ public class OfferingGenerator : MonoBehaviour
             srToUpdate.transform.parent.position += new Vector3(0, 1.15f, 0);
 
         srToUpdate.sprite = currentProposedpart.totemAspectSprite;
-        TribeManager.instance.CallNextStepCoroutine();
+        TribeManager.instance.CallNextStepCoroutine(2.5f);
     }
     /*     public struct generatedPart
     {

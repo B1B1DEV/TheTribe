@@ -71,7 +71,7 @@ public class TribeManager : MonoBehaviour
     {
         age = 0;
         currentStep = Step.Work;
-        StartCoroutine(MoveToNextStep());
+        StartCoroutine(MoveToNextStep(6.5f));
         faith = 3;
         newAgeReady = false;
     }
@@ -85,7 +85,7 @@ public class TribeManager : MonoBehaviour
             // + event next step
 
             if (currentStep == Step.Work)
-                StartCoroutine(MoveToNextStep());
+                StartCoroutine(MoveToNextStep(2.5f));
 
             OnNextStepLaunched();
         }
@@ -102,7 +102,7 @@ public class TribeManager : MonoBehaviour
                     currentStep = 0;
                     faith = 3;
                     // + event new age
-                    StartCoroutine(MoveToNextStep());
+                    StartCoroutine(MoveToNextStep(2.5f));
                     OnNewAge();
                 }
                 else
@@ -112,7 +112,7 @@ public class TribeManager : MonoBehaviour
             }
             else
             {
-                StartCoroutine(MoveToNextStep());
+                StartCoroutine(MoveToNextStep(2.5f));
                 currentStep = 0;
                 OnNextStepLaunched();
             }
@@ -120,17 +120,17 @@ public class TribeManager : MonoBehaviour
         }
     }
 
-    public void CallNextStepCoroutine()
+    public void CallNextStepCoroutine(float t)
     {
-        StartCoroutine(MoveToNextStep());
+        StartCoroutine(MoveToNextStep(t));
     }
 
-    IEnumerator MoveToNextStep()
+    IEnumerator MoveToNextStep(float timeToWait)
     {
         //yield return new WaitUntil(() => !audio.isPlaying);
         Debug.Log("Nextstep coroutine called");
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(timeToWait);
         yield return new WaitForEndOfFrame();
 
         NextStep();
