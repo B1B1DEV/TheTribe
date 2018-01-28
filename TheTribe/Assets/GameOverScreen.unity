@@ -386,23 +386,24 @@ Transform:
   m_Father: {fileID: 647233262}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &206250839
-Animator:
-  serializedVersion: 3
+--- !u!114 &206250839
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 206250837}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 440cd4ef582cbfb4888c0ad4ac5d3e8d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62dfe994b5b29424c9c8452ed8b1a04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyeDownLeft: {fileID: 21300000, guid: c1aea5001eec4604dbb998109c7a627a, type: 3}
+  eyeDown: {fileID: 21300000, guid: ad91b99dcafe6534e96ade45c3e7f840, type: 3}
+  eyeIdle: {fileID: 21300000, guid: bf0e63956fecc5c4fb6da26b0394e809, type: 3}
+  eyeLeft: {fileID: 21300000, guid: dcd6e0a200583c347b3711da4700d922, type: 3}
+  eyeLove: {fileID: 21300000, guid: c2da8cfee644c6a4c87dab1392287aa0, type: 3}
+  eyeAngry: {fileID: 21300000, guid: 0aa36bb14e5f92e48946f727489069da, type: 3}
+  eyeClosed: {fileID: 21300000, guid: 0dca206fd2514ec4dbf0c0d7be3e15cb, type: 3}
 --- !u!212 &206250840
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -440,7 +441,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: bf0e63956fecc5c4fb6da26b0394e809, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 8.23, y: 4.55}
   m_AdaptiveModeThreshold: 0.5
