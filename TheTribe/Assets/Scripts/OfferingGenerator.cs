@@ -6,6 +6,7 @@ public class OfferingGenerator : MonoBehaviour
 {
     public TotemManager totemManager;
     public SpriteRenderer partOfferedRenderer;
+    public GameObject EffectOnOffer;
     private List<TotemManager.partType> rejectedList;
     private TotemManager.partType currentProposedpart;
 
@@ -73,6 +74,7 @@ public class OfferingGenerator : MonoBehaviour
 
         if (TribeManager.instance.GetFaith() > 0)
         {
+            EffectOnOffer.SetActive(false);
             partOfferedRenderer.sprite = null;
             rejectedList.Remove(currentProposedpart);
             TribeManager.instance.CallNextStepCoroutine(2.5f);
@@ -92,6 +94,7 @@ public class OfferingGenerator : MonoBehaviour
 
     private void ValidateProposal()
     {
+        EffectOnOffer.SetActive(false);
         partOfferedRenderer.sprite = null;
 
         //Move up the totem as construction the age grows. Flat values for now
@@ -117,6 +120,7 @@ public class OfferingGenerator : MonoBehaviour
         {
             Debug.Log("GeneratePart");
             currentProposedpart = rejectedList[Random.Range(0, rejectedList.Count)];
+            EffectOnOffer.SetActive(true);
             partOfferedRenderer.sprite = currentProposedpart.totemAspectSprite;
 
             if(TribeManager.instance.GetAge() == TribeManager.instance.GetLastAgeIndex() && partOfferedRenderer.transform.rotation.eulerAngles.z != 90)
@@ -124,6 +128,7 @@ public class OfferingGenerator : MonoBehaviour
                 partOfferedRenderer.transform.Rotate(new Vector3(0, 0, 90));
                 partOfferedRenderer.transform.localScale = new Vector3(0.5f, 0.5f, 0);
                 partOfferedRenderer.transform.localPosition = new Vector3(partOfferedRenderer.transform.localPosition.x, 1.21f, partOfferedRenderer.transform.localPosition.z);
+                EffectOnOffer.transform.localPosition = new Vector3(EffectOnOffer.transform.localPosition.x, 1.21f, EffectOnOffer.transform.localPosition.z);
             }
         }
 

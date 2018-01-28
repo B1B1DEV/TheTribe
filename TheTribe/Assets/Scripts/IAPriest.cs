@@ -20,7 +20,7 @@ public class IAPriest : IACharacter {
 
     public void PutPriestOnAltar()
     {
-        transform.localPosition = new Vector3(0.76f, -2.04f, 0f);
+        transform.localPosition = new Vector3(-0.08f, -2.51f, 0f);
     }
 
     public void PutPriestOnGround()
