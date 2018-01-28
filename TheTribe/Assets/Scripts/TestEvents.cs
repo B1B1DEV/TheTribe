@@ -22,6 +22,7 @@ public class TestEvents : MonoBehaviour {
         TribeManager.OnNewAge += VillagersBackToWork;
         TribeManager.DivineFavor += VillagerRewardedAnimation;
         TribeManager.DivineWrath += VillagerPunishAnimation;
+        TribeManager.DivineFizzle += VillagersDontCare;
 
         //VillagersBackToWork();
     }
@@ -36,6 +37,7 @@ public class TestEvents : MonoBehaviour {
         TribeManager.OnNewAge -= VillagersBackToWork;
         TribeManager.DivineFavor -= VillagerRewardedAnimation;
         TribeManager.DivineWrath -= VillagerPunishAnimation;
+        TribeManager.DivineFizzle -= VillagersDontCare;
     }
 
     // Do the thing
@@ -121,24 +123,23 @@ public class TestEvents : MonoBehaviour {
     void VillagerPunishAnimation()
     {
         canvasChoice.SetActive(false);
+        
+        lightning.SetActive(true);
 
-        if (TribeManager.instance.GetFaith() > 0)
+        foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
-            lightning.SetActive(true);
-
-            foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
-            {
-                villager.GetComponent<Animator>().SetTrigger("Reject");
-            }
-
-            GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Reject");
-            StartCoroutine(WaitBeforePlayingStepSound("thunder", false));
+            villager.GetComponent<Animator>().SetTrigger("Reject");
         }
 
-        else
-        {
-            StartCoroutine(CallLightningFail());
-        }
+        GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Reject");
+        StartCoroutine(WaitBeforePlayingStepSound("thunder", false));
+        
+    }
+
+    void VillagersDontCare()
+    {
+        canvasChoice.SetActive(false);
+        StartCoroutine(CallLightningFail());
     }
 
     IEnumerator CallLightningFail()

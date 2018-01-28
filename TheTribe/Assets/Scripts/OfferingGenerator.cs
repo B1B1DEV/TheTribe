@@ -25,6 +25,7 @@ public class OfferingGenerator : MonoBehaviour
         TribeManager.OnNextStepLaunched += GenerateTotemPart;
         TribeManager.DivineWrath += RemoveFromList;
         TribeManager.DivineFavor += ValidateProposal;
+        TribeManager.DivineFizzle += ValidateAnyway;
     }
 
     // Unsubscribe
@@ -34,6 +35,7 @@ public class OfferingGenerator : MonoBehaviour
         TribeManager.OnNextStepLaunched -= GenerateTotemPart;
         TribeManager.DivineWrath -= RemoveFromList;
         TribeManager.DivineFavor -= ValidateProposal;
+        TribeManager.DivineFizzle -= ValidateAnyway;
     }
 
     public TotemManager.partType GetProposedPart()
@@ -70,20 +72,15 @@ public class OfferingGenerator : MonoBehaviour
 
     private void RemoveFromList()
     {
-        Debug.Log("Try again");
+        EffectOnOffer.SetActive(false);
+        partOfferedRenderer.sprite = null;
+        rejectedList.Remove(currentProposedpart);
+        TribeManager.instance.CallNextStepCoroutine(2.5f);
+    }
 
-        if (TribeManager.instance.GetFaith() > 0)
-        {
-            EffectOnOffer.SetActive(false);
-            partOfferedRenderer.sprite = null;
-            rejectedList.Remove(currentProposedpart);
-            TribeManager.instance.CallNextStepCoroutine(2.5f);
-        }
-
-        else
-        {
-            StartCoroutine(WaitBeforeValidate());
-        }
+    void ValidateAnyway()
+    {
+        StartCoroutine(WaitBeforeValidate());
     }
 
     IEnumerator WaitBeforeValidate()
