@@ -69,7 +69,6 @@ public class OfferingGenerator : MonoBehaviour
 
     private void RemoveFromList()
     {
-       
         Debug.Log("Try again");
 
         if (TribeManager.instance.GetFaith() > 0)
