@@ -1251,7 +1251,6 @@ GameObject:
   - component: {fileID: 670912302}
   - component: {fileID: 670912303}
   - component: {fileID: 670912305}
-  - component: {fileID: 670912304}
   m_Layer: 5
   m_Name: God
   m_TagString: Untagged
@@ -1289,17 +1288,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totemOrGod: God
---- !u!114 &670912304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 670912301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b11e3d9098f00c047aa54f973a89b001, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &670912305
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2097,7 +2085,6 @@ GameObject:
   - component: {fileID: 1285124407}
   - component: {fileID: 1285124408}
   - component: {fileID: 1285124410}
-  - component: {fileID: 1285124409}
   m_Layer: 5
   m_Name: Totem
   m_TagString: Untagged
@@ -2135,17 +2122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totemOrGod: Totem
---- !u!114 &1285124409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1285124406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b11e3d9098f00c047aa54f973a89b001, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1285124410
 BoxCollider2D:
   m_ObjectHideFlags: 0
