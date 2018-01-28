@@ -69,10 +69,26 @@ public class OfferingGenerator : MonoBehaviour
 
     private void RemoveFromList()
     {
-        partOfferedRenderer.sprite = null;
-        rejectedList.Remove(currentProposedpart);
+       
         Debug.Log("Try again");
-        TribeManager.instance.CallNextStepCoroutine(2.5f);
+
+        if (TribeManager.instance.GetFaith() > 0)
+        {
+            partOfferedRenderer.sprite = null;
+            rejectedList.Remove(currentProposedpart);
+            TribeManager.instance.CallNextStepCoroutine(2.5f);
+        }
+
+        else
+        {
+            StartCoroutine(WaitBeforeValidate());
+        }
+    }
+
+    IEnumerator WaitBeforeValidate()
+    {
+        yield return new WaitForSeconds(2.5f);
+        ValidateProposal();
     }
 
     private void ValidateProposal()

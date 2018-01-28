@@ -690,7 +690,7 @@ MonoBehaviour:
   stepAudio: {fileID: 2089202140}
   sunlight: {fileID: 948087087}
   lightning: {fileID: 1659740435}
-  lightningFail: {fileID: 0}
+  lightningFail: {fileID: 1646836953}
 --- !u!4 &281128319
 Transform:
   m_ObjectHideFlags: 0
@@ -1822,7 +1822,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: adc6ecb9ff9396c40ab38074547594bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -2292,7 +2292,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: adc6ecb9ff9396c40ab38074547594bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4739,6 +4739,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321124ed5b56578428d6ceb50e358a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offeringGenerator: {fileID: 2089202138}
+  totemManager: {fileID: 1189253828}
+  pointsPerCategory: 1
+  pointsPerAlignment: 1
+  pointsPerAspect: 1
 --- !u!82 &2089202140
 AudioSource:
   m_ObjectHideFlags: 0
