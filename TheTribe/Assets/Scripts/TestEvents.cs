@@ -23,7 +23,7 @@ public class TestEvents : MonoBehaviour {
         TribeManager.DivineFavor += VillagerRewardedAnimation;
         TribeManager.DivineWrath += VillagerPunishAnimation;
 
-        VillagersBackToWork();
+        //VillagersBackToWork();
     }
 	
 	// Unsubscribe

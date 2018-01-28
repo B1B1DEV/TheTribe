@@ -74,7 +74,7 @@ public class TribeManager : MonoBehaviour
     {
         age = 0;
         currentStep = Step.Work;
-        StartCoroutine(MoveToNextStep(6.5f));
+        //StartCoroutine(MoveToNextStep(6.5f));
         faith = 3;
         newAgeReady = false;
     }
