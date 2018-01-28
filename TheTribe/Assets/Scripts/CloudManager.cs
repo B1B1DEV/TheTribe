@@ -9,7 +9,7 @@ public class CloudManager : MonoBehaviour {
 	Transform CloudSkyHolder;
 	public Image background;
 	float moveDuration = 4;
-	float moveSpeed = 2;
+	float moveSpeed = 3f;
 	static CloudManager instance;
 	bool wallDisabled = false;
 	public UnityEvent OnFirstWallGone;
@@ -21,7 +21,7 @@ public class CloudManager : MonoBehaviour {
 		CloudSkyHolder = transform.Find("CloudSky");
 
 		// For Debug
-		//ExitSky();
+		ExitSky();
 	}
 	
 	public static void MoveCloudWall()
@@ -74,7 +74,18 @@ public class CloudManager : MonoBehaviour {
 			yield return 0;
 		}
 		OnSkyExit.Invoke();
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.3f);
+		color = CloudWallHolder.GetChild(0).GetComponent<Image>().color;
+		while(color.a > 0.05f)
+		{
+			color.a = color.a - Time.deltaTime;
+			foreach (Transform cloud in CloudWallHolder)
+			{
+				cloud.gameObject.GetComponent<Image>().color = color;
+			}
+			yield return 0;
+		}
+		
 		this.gameObject.SetActive(false);
 	}
 
