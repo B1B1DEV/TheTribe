@@ -4,7 +4,9 @@ using UnityEngine;
 
 
 public class IAVillager : IACharacter {
-    
+
+    public bool needToFlip;
+
     // Use this for initialization
     protected override void Start()
     {
@@ -15,4 +17,9 @@ public class IAVillager : IACharacter {
     void Update () {
 		
 	}
+
+    public void FlipPeonOnX()
+    {
+        GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
+    }
 }

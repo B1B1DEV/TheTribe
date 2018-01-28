@@ -64,6 +64,9 @@ public class TestEvents : MonoBehaviour {
 
             if (villager.GetComponent<IAPriest>())
                 villager.GetComponent<IAPriest>().PutPriestOnGround();
+
+            if (villager.GetComponent<IAVillager>() && villager.GetComponent<IAVillager>().needToFlip)
+                villager.GetComponent<IAVillager>().FlipPeonOnX();
         }
         
         // Manage God eye feedback
@@ -96,6 +99,9 @@ public class TestEvents : MonoBehaviour {
 
                     if (villager.GetComponent<IAPriest>())
                         villager.GetComponent<IAPriest>().PutPriestOnAltar();
+
+                    if (villager.GetComponent<IAVillager>() && villager.GetComponent<IAVillager>().needToFlip)
+                        villager.GetComponent<IAVillager>().FlipPeonOnX();
                 }
 
                 canvasChoice.SetActive(true);
