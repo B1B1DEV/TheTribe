@@ -36,12 +36,14 @@ public class ScoreManager : MonoBehaviour
     void OnEnable()
     {
         TribeManager.DivineFavor += AddPointsFromOffering;
+        TribeManager.DivineFizzle += AddPointsFromOffering;
     }
 
     // Unsubscribe
     void OnDisable()
     {
         TribeManager.DivineFavor -= AddPointsFromOffering;
+        TribeManager.DivineFizzle -= AddPointsFromOffering;
     }
 
     void UpdateScore()
