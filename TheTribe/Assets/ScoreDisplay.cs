@@ -43,17 +43,14 @@ public class ScoreDisplay : MonoBehaviour
             scoreSprite.size = new Vector2((float)i / 10f, scoreSprite.size.y);
             scoreSprite.color = new Color(1f-(float)i/100f,(float)i/100f,0.3f);
         }
-        Debug.Log("j'ai fini");
 
         if (score >= 45 && score < 75)
         {
-            Debug.Log("j'ai med");
             audioSource.Stop();
             audioSource.PlayOneShot(medScore);
         }
         else if (score < 45)
         {
-            Debug.Log("j'ai low");
             audioSource.Stop();
             audioSource.PlayOneShot(lowScore);
         }
