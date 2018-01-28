@@ -1950,10 +1950,9 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b62d395fb6eeca48849ba15ca6bcb85, type: 2}
   m_IsPrefabParent: 0
---- !u!224 &793973877 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224418774311899620, guid: 8b62d395fb6eeca48849ba15ca6bcb85,
-    type: 2}
+--- !u!4 &793973877 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 793973876}
 --- !u!1 &800846375
 GameObject:
@@ -2017,7 +2016,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: adc6ecb9ff9396c40ab38074547594bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -2188,7 +2187,7 @@ RectTransform:
   m_Children:
   - {fileID: 793973877}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4861,7 +4860,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aab995f1e7382c545b3e10f65642d461, type: 3}
   m_Color: {r: 1, g: 1, b: 0.88235295, a: 1}
   m_FlipX: 0
