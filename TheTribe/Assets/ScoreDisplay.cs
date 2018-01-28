@@ -44,8 +44,8 @@ public class ScoreDisplay : MonoBehaviour
             yield return new WaitForSeconds(0.03f);
             scoreSprite.size = new Vector2((float)i / 10f, scoreSprite.size.y);
             scoreSprite.color = new Color(1f-(float)i/100f,(float)i/100f,0.3f);
-            Debug.Log((float)(i / 12) * 100);
-            scoreText.text = " " + ((i/12)*100) + "%";
+            
+            scoreText.text = " " + i + "%";
         }
 
         if (score >= 45 && score < 75)
