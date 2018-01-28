@@ -47,14 +47,14 @@ public class TotemManager : MonoBehaviour {
     public List<generatedGodPart> GetGodGeneratedAspects() { return generatedGodPartList; }
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
-        GenerateTotem();
         if (SceneManager.instance != null)
         {
             SceneManager.instance.totemManager = this;
         }
-	}
+        GenerateTotem();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -104,7 +104,7 @@ public class TotemManager : MonoBehaviour {
         }
         
         // Save Generated God (to display in gameover screen)
-        SceneManager.instance.savedTotem = generatedGodPartList;
+        SceneManager.instance.trueGod = generatedGodPartList;
 
     // Try to Debug.Log() that shit to see if it works
     // ... And apparently, it does !

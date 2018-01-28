@@ -45,10 +45,12 @@ public class SceneManager : MonoBehaviour
     }
 
     // Public method to call display
-    public void DisplayLastTotemInMenu(Transform parent)
+    public void DisplayTotemOrGod(Transform parent,string totemOrGod)
     {
-        DisplayTotem(savedTotem, parent);
-        Debug.Log("Call display");
+        if (totemOrGod=="God")
+            DisplayTotem(trueGod, parent);
+        else
+            DisplayTotem(savedTotem, parent);
     }
 
     // Display Totem
@@ -61,25 +63,21 @@ public class SceneManager : MonoBehaviour
             {
                 SpriteRenderer sp = parent.gameObject.transform.Find("TotemHead").GetComponent<SpriteRenderer>();
                 sp.sprite = g.generatedAspect.godAspectSprite;
-                Debug.Log("Head");
             }
             else if(g.name.Contains("UpperBody"))
             {
                 SpriteRenderer sp = parent.gameObject.transform.Find("TotemUpperBody").GetComponent<SpriteRenderer>();
                 sp.sprite = g.generatedAspect.godAspectSprite;
-                Debug.Log("Upper Body");
             }
             else if (g.name.Contains("LowerBody"))
             {
                 SpriteRenderer sp = parent.gameObject.transform.Find("TotemLowerBody").GetComponent<SpriteRenderer>();
                 sp.sprite = g.generatedAspect.godAspectSprite;
-                Debug.Log("Lower Body");
             }
             else if (g.name.Contains("Accessory"))
             {
                 SpriteRenderer sp = parent.gameObject.transform.Find("TotemAccessory").GetComponent<SpriteRenderer>();
                 sp.sprite = g.generatedAspect.godAspectSprite;
-                Debug.Log("Accessory");
             }
 
             //if (!g.relatedGameObject.GetComponent<SpriteRenderer>())
@@ -87,7 +85,7 @@ public class SceneManager : MonoBehaviour
 
             //g.relatedGameObject.GetComponent<SpriteRenderer>().sprite = g.generatedAspect.godAspectSprite;
 
-            Debug.Log(g.name + " , " + g.generatedAspect.aspectName + " , " + g.generatedAspect.isAspectPositive);
+            //Debug.Log(g.name + " , " + g.generatedAspect.aspectName + " , " + g.generatedAspect.isAspectPositive);
         }
     }
 
