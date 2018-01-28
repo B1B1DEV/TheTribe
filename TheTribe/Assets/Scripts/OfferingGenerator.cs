@@ -52,14 +52,17 @@ public class OfferingGenerator : MonoBehaviour
             case 1:
                 rejectedList = totemManager.GetUpperbodyPossibleAspects();
                 srToUpdate = totemManager.gameObject.transform.Find("TotemUpperBody").GetComponent<SpriteRenderer>();
+                FindObjectOfType<MaterialDisplayManager>().SwitchToWoodAspect();
                 break;
             case 2:
                 rejectedList = totemManager.GetLowerbodyPossibleAspects();
                 srToUpdate = totemManager.gameObject.transform.Find("TotemLowerBody").GetComponent<SpriteRenderer>();
+                FindObjectOfType<MaterialDisplayManager>().SwitchToStoneAspect();
                 break;
             case 3:
                 rejectedList = totemManager.GetAccessoryPossibleAspects();
                 srToUpdate = totemManager.gameObject.transform.Find("TotemAccessory").GetComponent<SpriteRenderer>();
+                FindObjectOfType<MaterialDisplayManager>().SwitchToGoldAspect();
                 break;
         }
     }
@@ -98,7 +101,7 @@ public class OfferingGenerator : MonoBehaviour
             currentProposedpart = rejectedList[Random.Range(0, rejectedList.Count)];
             partOfferedRenderer.sprite = currentProposedpart.totemAspectSprite;
 
-            if(TribeManager.instance.GetAge() == TribeManager.instance.GetLastAgeIndex())
+            if(TribeManager.instance.GetAge() == TribeManager.instance.GetLastAgeIndex() && partOfferedRenderer.transform.rotation.eulerAngles.z != 90)
             {
                 partOfferedRenderer.transform.Rotate(new Vector3(0, 0, 90));
                 partOfferedRenderer.transform.localScale = new Vector3(0.5f, 0.5f, 0);
