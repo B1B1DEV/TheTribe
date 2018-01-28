@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreDisplay : MonoBehaviour
 {
@@ -9,11 +10,14 @@ public class ScoreDisplay : MonoBehaviour
     public AudioClip lowScore;
     public AudioClip medScore;
     public AudioClip highScore;
+    public AudioClip pitchUp;
     public AudioSource audioSource;
+    public Text scoreText;
 
     // Use this for initialization
     void Start ()
     {
+        scoreText.text = "";
         DisplayScore();
     }
 
@@ -28,7 +32,7 @@ public class ScoreDisplay : MonoBehaviour
 
     IEnumerator AnimateScoreDisplay()
     {
-        audioSource.PlayOneShot(highScore);
+        audioSource.PlayOneShot(pitchUp);
         yield return new WaitForSeconds(0.3f);
 
         scoreSprite.size = new Vector2(0f, scoreSprite.size.y);
@@ -53,6 +57,12 @@ public class ScoreDisplay : MonoBehaviour
             audioSource.Stop();
             audioSource.PlayOneShot(lowScore);
         }
-        
+        else
+        {
+            audioSource.PlayOneShot(highScore);
+        }
+
+        scoreText.text = " " + score.ToString() + "%";
+
     }
 }

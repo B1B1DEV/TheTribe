@@ -8,6 +8,7 @@ public class TestEvents : MonoBehaviour {
     public AudioSource stepAudio;
     public GameObject sunlight;
     public GameObject lightning;
+    public GameObject lightningFail;
 
 	// Subscribe
 	void OnEnable ()
