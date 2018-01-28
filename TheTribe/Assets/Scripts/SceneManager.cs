@@ -44,4 +44,45 @@ public class SceneManager : MonoBehaviour
         Application.Quit();
     }
 
+    // Public method to call display
+    public void DisplayLastTotemInMenu(Transform parent)
+    {
+        DisplayTotem(savedTotem, parent);
+    }
+
+    // Display Totem
+    private void DisplayTotem(List<TotemManager.generatedGodPart> listOfParts, Transform parent)
+    {
+        foreach (TotemManager.generatedGodPart g in listOfParts)
+        {
+            if (g.name.Contains("Head"))
+            {
+                SpriteRenderer sp = parent.gameObject.transform.Find("TotemHead").GetComponent<SpriteRenderer>();
+                sp.sprite = g.generatedAspect.godAspectSprite;
+            }
+            else if(g.name.Contains("UpperBody"))
+            {
+                SpriteRenderer sp = parent.gameObject.transform.Find("TotemUpperBody").GetComponent<SpriteRenderer>();
+                sp.sprite = g.generatedAspect.godAspectSprite;
+            }
+            else if (g.name.Contains("LowerBody"))
+            {
+                SpriteRenderer sp = parent.gameObject.transform.Find("TotemLowerBody").GetComponent<SpriteRenderer>();
+                sp.sprite = g.generatedAspect.godAspectSprite;
+            }
+            else if (g.name.Contains("Accessory"))
+            {
+                SpriteRenderer sp = parent.gameObject.transform.Find("TotemAccessory").GetComponent<SpriteRenderer>();
+                sp.sprite = g.generatedAspect.godAspectSprite;
+            }
+
+            //if (!g.relatedGameObject.GetComponent<SpriteRenderer>())
+            //g.relatedGameObject.AddComponent<SpriteRenderer>();
+
+            //g.relatedGameObject.GetComponent<SpriteRenderer>().sprite = g.generatedAspect.godAspectSprite;
+
+            Debug.Log(g.name + " , " + g.generatedAspect.aspectName + " , " + g.generatedAspect.isAspectPositive);
+        }
+    }
+
 }
