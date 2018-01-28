@@ -14,7 +14,7 @@ public class GodNameUI : MonoBehaviour {
 		c.a = 0;
 		nameText.color = c;
 		nameText.text = GetGodName();
-		Invoke("Display", 1);
+		Invoke("Display", 2);
 	}
 
 	string GetGodName()
@@ -34,15 +34,17 @@ public class GodNameUI : MonoBehaviour {
 
 	public void Hide()
 	{
+		StopAllCoroutines();
 		StartCoroutine(MakeTextDisappear());
 	}
 	
 	IEnumerator MakeTextAppear()
 	{
 		Color c = nameText.color;
-		while (nameText.color.a < 1)
+		c.a = 0;
+		while (c.a < 1)
 		{
-			c.a += Time.deltaTime * 0.5f;
+			c.a += Time.deltaTime * 0.4f;
 			nameText.color = c;
 			yield return new WaitForEndOfFrame();
 		}
@@ -51,9 +53,10 @@ public class GodNameUI : MonoBehaviour {
 	IEnumerator MakeTextDisappear()
 	{
 		Color c = nameText.color;
-		while (nameText.color.a > 0)
+		c.a = 1;
+		while (c.a > 0)
 		{
-			c.a -= Time.deltaTime * 0.5f;
+			c.a -= Time.deltaTime * 0.4f;
 			nameText.color = c;
 			yield return new WaitForEndOfFrame();
 		}

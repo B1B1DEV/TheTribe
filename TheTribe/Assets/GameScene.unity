@@ -3371,30 +3371,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1810615232}
-    - target: {fileID: 1728510593700898, guid: c511bcfd18228bb488fec70b56067ed3, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212313264895364630, guid: c511bcfd18228bb488fec70b56067ed3,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 212435062492410268, guid: c511bcfd18228bb488fec70b56067ed3,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 212317743348800948, guid: c511bcfd18228bb488fec70b56067ed3,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 223720081706363646, guid: c511bcfd18228bb488fec70b56067ed3,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c511bcfd18228bb488fec70b56067ed3, type: 2}
   m_IsPrefabParent: 0
@@ -4730,6 +4706,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
