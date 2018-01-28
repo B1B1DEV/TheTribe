@@ -121,15 +121,52 @@ public class TestEvents : MonoBehaviour {
     void VillagerPunishAnimation()
     {
         canvasChoice.SetActive(false);
-        lightning.SetActive(true);
+
+        if (TribeManager.instance.GetFaith() > 0)
+        {
+            lightning.SetActive(true);
+
+            foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
+            {
+                villager.GetComponent<Animator>().SetTrigger("Reject");
+            }
+
+            GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Reject");
+            StartCoroutine(WaitBeforePlayingStepSound("thunder", false));
+        }
+
+        else
+        {
+            StartCoroutine(CallLightningFail());
+        }
+    }
+
+    IEnumerator CallLightningFail()
+    {
+        lightningFail.SetActive(true);
+        GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Reject");
+        stepAudio.clip = Resources.Load("thunder_fail") as AudioClip;
+        stepAudio.loop = true;
+        stepAudio.Play();
+
+        yield return new WaitForSeconds(1.5f);
+
+        GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Reset");
+        stepAudio.Stop();
+        lightningFail.SetActive(false);
+
+        yield return new WaitForSeconds(0.75f);
 
         foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
-            villager.GetComponent<Animator>().SetTrigger("Reject");
+            villager.GetComponent<Animator>().SetTrigger("Accept");
         }
 
-        GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>().SetTrigger("Reject");
-        StartCoroutine(WaitBeforePlayingStepSound("thunder", false));
+        yield return new WaitForSeconds(0.1f);
+
+        stepAudio.clip = Resources.Load("Yeah") as AudioClip;
+        stepAudio.loop = false;
+        stepAudio.Play();
     }
 
     void VillagerRewardedAnimation()

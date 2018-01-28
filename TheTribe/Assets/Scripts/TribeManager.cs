@@ -167,7 +167,8 @@ public class TribeManager : MonoBehaviour
         }
         else if (!favorable && faith == 0)
         {
-            DivineFizzle();
+            //DivineFizzle();
+            DivineWrath();
             newAgeReady = true;
             NextStep();
         }
