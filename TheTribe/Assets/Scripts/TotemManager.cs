@@ -92,17 +92,17 @@ public class TotemManager : MonoBehaviour {
         }
 
         // THEN for each generated part
-        /*
+        
         foreach (generatedGodPart g in generatedGodPartList)
         {
-            if (!g.relatedGameObject.GetComponent<SpriteRenderer>())
-                g.relatedGameObject.AddComponent<SpriteRenderer>();
+            //if (!g.relatedGameObject.GetComponent<SpriteRenderer>())
+                //g.relatedGameObject.AddComponent<SpriteRenderer>();
             
             //g.relatedGameObject.GetComponent<SpriteRenderer>().sprite = g.generatedAspect.godAspectSprite;
             
             Debug.Log(g.name + " , " + g.generatedAspect.aspectName +" , " +  g.generatedAspect.isAspectPositive);
         }
-        */
+        
         // Save Generated God (to display in gameover screen)
         //SceneManager.instance.savedTotem = generatedGodPartList;
 

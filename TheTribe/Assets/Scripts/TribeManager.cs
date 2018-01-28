@@ -49,6 +49,9 @@ public class TribeManager : MonoBehaviour
     public delegate void Wrath();
     public static event Wrath DivineWrath;
 
+    public delegate void Fizzle();
+    public static event Fizzle DivineFizzle;
+
     // Singleton
     public static TribeManager instance;
     private void Awake()
@@ -128,7 +131,7 @@ public class TribeManager : MonoBehaviour
     IEnumerator MoveToNextStep(float timeToWait)
     {
         //yield return new WaitUntil(() => !audio.isPlaying);
-        Debug.Log("Nextstep coroutine called");
+        //Debug.Log("Nextstep coroutine called");
 
         yield return new WaitForSeconds(timeToWait);
         yield return new WaitForEndOfFrame();
@@ -154,12 +157,18 @@ public class TribeManager : MonoBehaviour
             // Go to Epilogue step
             NextStep();
         }
-        else
+        else if (!favorable && faith > 0)
         {
             // Gestion cas faith=0 à ajouter !!!
             // Send Event Refusal
             DivineWrath();
             faith -= 1;
+            NextStep();
+        }
+        else if (!favorable && faith == 0)
+        {
+            DivineFizzle();
+            newAgeReady = true;
             NextStep();
         }
     }

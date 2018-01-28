@@ -28,7 +28,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        totemManager = offeringGenerator.totemManager;
+        //totemManager = offeringGenerator.totemManager;
         savedTotem = new List<TotemManager.generatedGodPart>();
     }
 
@@ -46,7 +46,8 @@ public class ScoreManager : MonoBehaviour
 
     void UpdateScore()
     {
-        percentageScore = (int)((float)score /maxScore);
+        percentageScore = Mathf.RoundToInt(((float)score / (float)maxScore) * 100f);
+        SceneManager.instance.savedScore = percentageScore;
     }
 
     public int GetScore()
@@ -68,7 +69,7 @@ public class ScoreManager : MonoBehaviour
         gp.name = "savedTotem";
         gp.relatedGameObject = null;
         savedTotem.Add(gp);
-        //SceneManager.instance.savedTotem = savedTotem;
+        SceneManager.instance.savedTotem = savedTotem;
 
         // Compare part with ideal
         TotemManager.generatedGodAspect godAspect = totemManager.GetGodHeadGeneratedAspect();

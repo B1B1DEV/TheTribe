@@ -20,8 +20,8 @@ public class ScoreDisplay : MonoBehaviour
     // Update is called once per frame
     void DisplayScore()
     {
-        //score = SceneManager.instance.savedScore;
-        score = Random.Range(0, 12);
+        score = SceneManager.instance.savedScore;
+        //score = Random.Range(0, 12);
         Debug.Log(score.ToString());
         StartCoroutine(AnimateScoreDisplay());
     }
@@ -33,21 +33,21 @@ public class ScoreDisplay : MonoBehaviour
 
         scoreSprite.size = new Vector2(0f, scoreSprite.size.y);
 
-        for (int i = 0; i < score * 3; i++)
+        for (int i = 0; i < score; i++)
         {
-            yield return new WaitForSeconds(0.09f);
-            scoreSprite.size = new Vector2((float)i / 4.5f, scoreSprite.size.y);
-            scoreSprite.color = new Color(1f/(float)i,(float)i/36f,0.3f);
+            yield return new WaitForSeconds(0.03f);
+            scoreSprite.size = new Vector2((float)i / 10f, scoreSprite.size.y);
+            scoreSprite.color = new Color(1f-(float)i/100f,(float)i/100f,0.3f);
         }
         Debug.Log("j'ai fini");
 
-        if (score > 5 && score < 10)
+        if (score >= 45 && score < 75)
         {
             Debug.Log("j'ai med");
             audioSource.Stop();
             audioSource.PlayOneShot(medScore);
         }
-        else if (score < 6)
+        else if (score < 45)
         {
             Debug.Log("j'ai low");
             audioSource.Stop();

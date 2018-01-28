@@ -14,7 +14,7 @@ public class TestEvents : MonoBehaviour {
     {
         canvasChoice.SetActive(false);
 
-        //TribeManager.OnNextStepLaunched += DoTheThing;
+        TribeManager.DivineFizzle += DoTheThing;
         //TribeManager.OnNewAge += WriteSomethingInConsole;
 
         TribeManager.OnNextStepLaunched += UpdateVillagersAnimation;
@@ -28,7 +28,7 @@ public class TestEvents : MonoBehaviour {
 	// Unsubscribe
 	void OnDisable ()
     {
-        //TribeManager.OnNextStepLaunched -= DoTheThing;
+        TribeManager.DivineFizzle -= DoTheThing;
         //TribeManager.OnNewAge -= WriteSomethingInConsole;
 
         TribeManager.OnNextStepLaunched -= UpdateVillagersAnimation;
