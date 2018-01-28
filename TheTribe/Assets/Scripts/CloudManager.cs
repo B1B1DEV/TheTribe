@@ -96,6 +96,7 @@ public class CloudManager : MonoBehaviour {
 		wallDisabled = true;
 		yield return new WaitForSeconds(1);
 		float startTime = 0;
+		godBlink = StartCoroutine(BlinkGodRay());
 		while (startTime < moveDuration)
 		{
 			startTime += Time.deltaTime;
@@ -110,17 +111,16 @@ public class CloudManager : MonoBehaviour {
 					cloud.transform.position = cloud.transform.position + Vector3.right * moveSpeed * Time.deltaTime;
 				}
 			}
-			godRay.color = new Color(1, 1, 1, godRay.color.a + Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 		}
-		godBlink = StartCoroutine(BlinkGodRay());
+		
 		OnFirstWallGone.Invoke();
 	}
 
 	IEnumerator BlinkGodRay()
 	{
 		Color color = godRay.color;
-		color.a = 1;
+		color.a = 0;
 		while (true)
 		{
 			while(color.a > 0.5f)
