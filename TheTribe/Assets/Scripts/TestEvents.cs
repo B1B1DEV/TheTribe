@@ -60,7 +60,10 @@ public class TestEvents : MonoBehaviour {
 
         foreach (IACharacter villager in FindObjectsOfType<IACharacter>())
         {
-            villager.GetComponent<Animator>().SetTrigger("Reset");
+            if (villager.GetComponent<IAPriest>() && TribeManager.instance.GetFaith() < 3)
+                villager.GetComponent<Animator>().SetTrigger("ResetGrilled");
+            else
+                villager.GetComponent<Animator>().SetTrigger("Reset");
 
             //foreach (AnimatorControllerParameter g in villager.GetComponent<Animator>().parameters)
               //  villager.GetComponent<Animator>().ResetTrigger(g.ToString());
