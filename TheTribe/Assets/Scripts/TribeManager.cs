@@ -10,6 +10,7 @@ public class TribeManager : MonoBehaviour
     Step currentStep;
     int faith;
     bool newAgeReady;
+    AudioSource audio;
 
     // public Get Methods
     public int GetAge()
@@ -52,6 +53,8 @@ public class TribeManager : MonoBehaviour
     public static TribeManager instance;
     private void Awake()
     {
+        audio = GetComponent<AudioSource>();
+
         if (instance == null)
         {
             instance = this;
@@ -68,6 +71,7 @@ public class TribeManager : MonoBehaviour
     {
         age = 0;
         currentStep = Step.Work;
+        StartCoroutine(MoveToNextStep());
         faith = 3;
         newAgeReady = false;
     }
@@ -80,10 +84,15 @@ public class TribeManager : MonoBehaviour
             currentStep += 1;
             // + event next step
 
+            if (currentStep == Step.Work)
+                StartCoroutine(MoveToNextStep());
+
             OnNextStepLaunched();
         }
         else
         {
+            Debug.Log("CurrentStep : " + currentStep.ToString());
+            
             if (newAgeReady)
             {
                 newAgeReady = false;
@@ -93,6 +102,7 @@ public class TribeManager : MonoBehaviour
                     currentStep = 0;
                     faith = 3;
                     // + event new age
+                    StartCoroutine(MoveToNextStep());
                     OnNewAge();
                 }
                 else
@@ -102,11 +112,28 @@ public class TribeManager : MonoBehaviour
             }
             else
             {
+                StartCoroutine(MoveToNextStep());
                 currentStep = 0;
                 OnNextStepLaunched();
             }
             
         }
+    }
+
+    public void CallNextStepCoroutine()
+    {
+        StartCoroutine(MoveToNextStep());
+    }
+
+    IEnumerator MoveToNextStep()
+    {
+        //yield return new WaitUntil(() => !audio.isPlaying);
+        Debug.Log("Nextstep coroutine called");
+
+        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForEndOfFrame();
+
+        NextStep();
     }
 
     // Gaze Function
@@ -148,10 +175,11 @@ public class TribeManager : MonoBehaviour
     // Test Function
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             NextStep();
-        }
+        }*/
     }
 
 }

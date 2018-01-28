@@ -59,8 +59,9 @@ public class TotemManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.R))
-            GenerateTotem();
+            GenerateTotem();*/
 	}
     
     void GenerateTotem()
