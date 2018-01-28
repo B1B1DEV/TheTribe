@@ -6,7 +6,7 @@ public class TribeManager : MonoBehaviour
 {
     // private properties
     int age;
-    public enum Step{Work,Offering,Epilogue};
+    public enum Step { Work, Offering, Epilogue };
     Step currentStep;
     int faith;
     bool newAgeReady;
@@ -35,6 +35,8 @@ public class TribeManager : MonoBehaviour
     // Other Managers
     public ScoreManager scoreManager;
 
+    // Score feedback in scene
+    public GameObject faithPointsGO;
 
     // Events
     public delegate void NextStepEvent();
@@ -61,7 +63,7 @@ public class TribeManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-           // DontDestroyOnLoad(this);
+            // DontDestroyOnLoad(this);
         }
         else
         {
@@ -70,12 +72,13 @@ public class TribeManager : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         age = 0;
         currentStep = Step.Work;
         //StartCoroutine(MoveToNextStep(6.5f));
         faith = 3;
+        ApplyFaithFeedback();
         newAgeReady = false;
     }
 
@@ -95,7 +98,7 @@ public class TribeManager : MonoBehaviour
         else
         {
             Debug.Log("CurrentStep : " + currentStep.ToString());
-            
+
             if (newAgeReady)
             {
                 newAgeReady = false;
@@ -104,6 +107,7 @@ public class TribeManager : MonoBehaviour
                     age += 1;
                     currentStep = 0;
                     faith = 3;
+                    ApplyFaithFeedback();
                     // + event new age
                     StartCoroutine(MoveToNextStep(2.5f));
                     OnNewAge();
@@ -119,7 +123,7 @@ public class TribeManager : MonoBehaviour
                 currentStep = 0;
                 OnNextStepLaunched();
             }
-            
+
         }
     }
 
@@ -163,12 +167,13 @@ public class TribeManager : MonoBehaviour
             // Send Event Refusal
             DivineWrath();
             faith -= 1;
+            ApplyFaithFeedback();
             NextStep();
         }
         else if (!favorable && faith == 0)
         {
-            //DivineFizzle();
-            DivineWrath();
+            DivineFizzle();
+            //DivineWrath();
             newAgeReady = true;
             NextStep();
         }
@@ -190,6 +195,17 @@ public class TribeManager : MonoBehaviour
         {
             NextStep();
         }*/
+    }
+
+    void ApplyFaithFeedback()
+    {
+        foreach (Transform t in faithPointsGO.transform)
+            t.gameObject.SetActive(false);
+
+        for (int i = 0; i < faith; i++)
+        {
+            faithPointsGO.transform.GetChild(i).gameObject.SetActive(true);
+        }
     }
 
 }
