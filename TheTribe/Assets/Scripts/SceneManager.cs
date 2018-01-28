@@ -48,6 +48,7 @@ public class SceneManager : MonoBehaviour
     public void DisplayLastTotemInMenu(Transform parent)
     {
         DisplayTotem(savedTotem, parent);
+        Debug.Log("Call display");
     }
 
     // Display Totem
@@ -55,25 +56,30 @@ public class SceneManager : MonoBehaviour
     {
         foreach (TotemManager.generatedGodPart g in listOfParts)
         {
+            Debug.Log(g.name);
             if (g.name.Contains("Head"))
             {
                 SpriteRenderer sp = parent.gameObject.transform.Find("TotemHead").GetComponent<SpriteRenderer>();
                 sp.sprite = g.generatedAspect.godAspectSprite;
+                Debug.Log("Head");
             }
             else if(g.name.Contains("UpperBody"))
             {
                 SpriteRenderer sp = parent.gameObject.transform.Find("TotemUpperBody").GetComponent<SpriteRenderer>();
                 sp.sprite = g.generatedAspect.godAspectSprite;
+                Debug.Log("Upper Body");
             }
             else if (g.name.Contains("LowerBody"))
             {
                 SpriteRenderer sp = parent.gameObject.transform.Find("TotemLowerBody").GetComponent<SpriteRenderer>();
                 sp.sprite = g.generatedAspect.godAspectSprite;
+                Debug.Log("Lower Body");
             }
             else if (g.name.Contains("Accessory"))
             {
                 SpriteRenderer sp = parent.gameObject.transform.Find("TotemAccessory").GetComponent<SpriteRenderer>();
                 sp.sprite = g.generatedAspect.godAspectSprite;
+                Debug.Log("Accessory");
             }
 
             //if (!g.relatedGameObject.GetComponent<SpriteRenderer>())
