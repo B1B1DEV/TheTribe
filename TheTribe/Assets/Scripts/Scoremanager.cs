@@ -99,12 +99,14 @@ public class ScoreManager : MonoBehaviour
         SceneManager.instance.savedTotem = savedTotem;
 
         Debug.Log(score.ToString() + "avant modif");
-        score += godAspect.category == acceptedPart.category ? 1 : 0;
 
+        score += godAspect.category == acceptedPart.category ? pointsPerCategory : 0;
         Debug.Log(score.ToString() + "category god="+ godAspect.category.ToString() + ", totem="+ acceptedPart.category.ToString());
-        score += godAspect.isAspectPositive == acceptedPart.isAspectPositive ? 1 : 0;
+
+        score += godAspect.isAspectPositive == acceptedPart.isAspectPositive ? pointsPerAlignment : 0;
         Debug.Log(score.ToString() + "alignment god=" + godAspect.isAspectPositive.ToString() + ", totem=" + acceptedPart.isAspectPositive.ToString());
-        score += godAspect.aspectName == acceptedPart.aspectName ? 1 : 0;
+
+        score += godAspect.aspectName == acceptedPart.aspectName ? pointsPerAspect : 0;
         Debug.Log(score.ToString() + "aspect god=" + godAspect.aspectName.ToString() + ", totem=" + acceptedPart.aspectName.ToString());
 
         //Debug.Log(score.ToString());

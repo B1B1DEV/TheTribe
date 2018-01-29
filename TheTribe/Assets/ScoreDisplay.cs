@@ -60,6 +60,7 @@ public class ScoreDisplay : MonoBehaviour
         }
         else
         {
+            audioSource.Stop();
             audioSource.PlayOneShot(highScore);
         }
 
